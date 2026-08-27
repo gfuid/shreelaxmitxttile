@@ -1,0 +1,215 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   Sri Vijaylaxmi Sarees - Heritage Luxury Ethnic Design System (Ref: image.png)
+   ========================================================================== */
+
+:root {
+  /* Brand Palette from Reference Design */
+  --bg-cream: #F8F4EE;         /* Primary Warm Ivory/Silk Canvas */
+  --bg-white: #FFFFFF;
+  --bg-card: #FAF6F0;
+  
+  --maroon-deep: #4A0E17;      /* Heritage Royal Maroon / Wine */
+  --maroon-dark: #32070D;      /* Deep Wine Footer / Arches */
+  --maroon-nav: #5C161D;       /* Nav Bar Maroon */
+  --maroon-light: #FBF4F5;
+
+  --accent-peach: #E8A87C;     /* Warm Gold / Peach Action Button */
+  --accent-peach-hover: #D48858;
+  --gold: #D97706;
+  --gold-light: #FEF3C7;
+
+  --text-dark: #1F1916;        /* Rich Dark Charcoal */
+  --text-muted: #736B63;
+  --text-light: #9E948A;
+
+  --border-cream: #E5DDD0;
+  --border-subtle: #EDE5D8;
+
+  /* Typography */
+  --font-serif: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --font-royal: 'Cinzel', 'Cinzel Decorative', serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --shadow-subtle: 0 4px 20px rgba(74, 14, 23, 0.06);
+  --shadow-hover: 0 12px 30px rgba(74, 14, 23, 0.12);
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-cream);
+  color: var(--text-dark);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Luxury Serif Typography */
+h1, h2, h3, h4, .font-serif {
+  font-family: var(--font-serif);
+  letter-spacing: 0.02em;
+}
+
+.font-royal {
+  font-family: var(--font-royal);
+  letter-spacing: 0.08em;
+}
+
+/* Mughal Arch Shape Generator */
+.mughal-arch {
+  clip-path: polygon(
+    0% 100%,
+    0% 25%,
+    10% 20%,
+    20% 12%,
+    35% 5%,
+    50% 0%,
+    65% 5%,
+    80% 12%,
+    90% 20%,
+    100% 25%,
+    100% 100%
+  );
+  border-top-left-radius: 120px;
+  border-top-right-radius: 120px;
+}
+
+.scalloped-arch {
+  border-top-left-radius: 140px;
+  border-top-right-radius: 140px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Reference UI Pill Button (+ ₹1,999) */
+.btn-price-pill {
+  background: linear-gradient(135deg, #F3BA93 0%, #D48858 100%);
+  color: #381206;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 0.75rem;
+  padding: 0.35rem 1.1rem;
+  border-radius: 9999px;
+  box-shadow: 0 3px 8px rgba(212, 136, 88, 0.35);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  transition: all 0.25s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-price-pill:hover {
+  background: linear-gradient(135deg, #E8A87C 0%, #C07343 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(212, 136, 88, 0.45);
+}
+
+.btn-maroon {
+  background-color: var(--maroon-deep);
+  color: #FFFFFF;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all 0.25s ease;
+}
+
+.btn-maroon:hover {
+  background-color: var(--maroon-dark);
+  transform: translateY(-1px);
+}
+
+/* Primary Button */
+.btn-primary {
+  background: linear-gradient(135deg, #5C161D 0%, #3A0810 100%);
+  color: #FFFFFF;
+  font-weight: 600;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(74, 14, 23, 0.2);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #4A0E17 0%, #200408 100%);
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 1240px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-cream);
+}
+::-webkit-scrollbar-thumb {
+  background: #D9CDBF;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--maroon-deep);
+}
+
+/* Inputs */
+.form-input, .form-select, .form-textarea {
+  width: 100%;
+  padding: 0.65rem 0.9rem;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: var(--text-dark);
+  background-color: #FFFFFF;
+  border: 1px solid var(--border-cream);
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  border-color: var(--maroon-deep);
+  box-shadow: 0 0 0 2px rgba(92, 22, 29, 0.12);
+}
+
+/* Hide scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+.no-scrollbar {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
+
+/* Luxury Skeleton Shimmer */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    #F3ECE2 0%,
+    #E8DFD3 50%,
+    #F3ECE2 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite ease-in-out;
+  border-radius: 0.75rem;
+}
+
+

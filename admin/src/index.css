@@ -1,0 +1,183 @@
+/* Google Fonts for Royal Ethnic Sarees Branding */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+@import "tailwindcss";
+
+:root {
+  --bg-cream: #FAF8F5;
+  --maroon-deep: #700B1A;
+  --maroon-dark: #4A0E17;
+  --accent-gold: #D97706;
+  --border-cream: #E8E2D9;
+
+  --font-serif: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --font-royal: 'Cinzel', 'Cinzel Decorative', serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-cream);
+  color: #1F1916;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-royal {
+  font-family: var(--font-royal);
+}
+
+/* Primary Button */
+.btn-primary {
+  background: linear-gradient(135deg, #700B1A 0%, #4A0E17 100%);
+  color: #FFFFFF;
+  font-weight: 600;
+  border-radius: 0.75rem;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #580816 0%, #32070D 100%);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background-color: #FFFFFF;
+  color: #374151;
+  border: 1px solid #D1D5DB;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background-color: #F3F4F6;
+}
+
+.btn-price-pill {
+  background: linear-gradient(135deg, #F3BA93 0%, #D48858 100%);
+  color: #381206;
+  font-weight: 700;
+  box-shadow: 0 3px 8px rgba(212, 136, 88, 0.35);
+  transition: all 0.2s ease;
+  border-radius: 9999px;
+  cursor: pointer;
+}
+
+/* Form Label */
+.form-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #374151;
+  margin-bottom: 0.35rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* Input Fields */
+.form-input, .form-select, .form-textarea {
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  font-size: 0.8rem;
+  color: #1F1916;
+  background-color: #FFFFFF;
+  border: 1px solid var(--border-cream);
+  border-radius: 0.75rem;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  border-color: var(--maroon-deep);
+  box-shadow: 0 0 0 3px rgba(112, 11, 26, 0.15);
+  background-color: #FFFFFF;
+}
+
+/* Modal System (Fixed Top-Level Centered Dialogs with Backdrop Blur) */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background-color: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  overflow-y: auto;
+  animation: fadeIn 0.15s ease-out;
+}
+
+.modal-box {
+  background-color: #FFFFFF;
+  border-radius: 1.5rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+  max-height: calc(100vh - 3rem);
+  overflow-y: auto;
+  width: 100%;
+  border: 1px solid #E8E2D9;
+  position: relative;
+  margin: auto;
+  animation: zoomIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes zoomIn {
+  from { opacity: 0; transform: scale(0.95) translateY(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F3ECE2;
+}
+::-webkit-scrollbar-thumb {
+  background: #C4B5A5;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #700B1A;
+}
+
+/* Luxury Skeleton Shimmer */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    #F3ECE2 0%,
+    #E8DFD3 50%,
+    #F3ECE2 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite ease-in-out;
+  border-radius: 0.75rem;
+}
