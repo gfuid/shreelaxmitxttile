@@ -56,6 +56,7 @@ const Footer = () => {
               CUSTOMER CARE
             </h4>
             <ul className="space-y-2 text-xs">
+              <li><Link to="/order-query" className="hover:text-[#E8A87C] text-amber-200/90 font-medium flex items-center gap-1"><span>Order & Saree Query</span> <span className="text-[9px] bg-[#5C161D] text-[#E8A87C] px-1.5 py-0.5 rounded-full">New</span></Link></li>
               <li><Link to="/track-order" className="hover:text-[#E8A87C]">Track Order Live</Link></li>
               <li><Link to="/returns" className="hover:text-[#E8A87C]">7-Day Return Policy</Link></li>
               <li><Link to="/silk-care" className="hover:text-[#E8A87C]">Silk Care & Burn Test</Link></li>

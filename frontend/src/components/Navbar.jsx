@@ -54,6 +54,21 @@ const Navbar = () => {
 
   const [isScrolled, setIsScrolled] = useState(false);
 
+  // Rotating announcements for the luxury top bar
+  const topAnnouncements = [
+    { text: 'Free Insured Express Shipping Across India on All Orders', highlight: '⚡' },
+    { text: 'Direct Master Weaver Wholesale Rates Since 1980 • Rikab Gunj, Hyd', highlight: '🏛️' },
+    { text: '100% Pure Silk Mark Certified Handloom & Bridal Sarees', highlight: '✨' }
+  ];
+  const [announcementIdx, setAnnouncementIdx] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setAnnouncementIdx((prev) => (prev + 1) % 3);
+    }, 3800);
+    return () => clearInterval(interval);
+  }, []);
+
   // Close all menus & popups on route change
   useEffect(() => {
     setMobileMenuOpen(false);
@@ -186,14 +201,11 @@ const Navbar = () => {
     { name: 'HOME', path: '/' },
     { name: 'ALL SAREES', path: '/shop', hasMegaMenu: 'all-sarees' },
     { name: 'DHARMAVARAM', path: '/shop?category=Dharmavaram+Pattu' },
-    { name: 'BANARAS CREAM', path: '/shop?category=Banaras+Wed+Cream' },
-    { name: 'FANCY GHAGARA', path: '/shop?category=Fancy+Ghagara' },
-    { name: 'BABY GHAGARA', path: '/shop?category=Baby+Ghagara' },
-    { name: 'WEDDING GHAGARA', path: '/shop?category=Wedding+Ghagara' },
-    { name: 'SURAT POUCH', path: '/shop?category=Surat+Pouch' },
-    { name: 'SURAT PRINTED', path: '/shop?category=Surat+Printed' },
-    { name: 'SURAT PATTU', path: '/shop?category=Surat+Pattu' },
+    { name: 'BANARAS SILK', path: '/shop?category=Banaras+Wed+Cream' },
+    { name: 'GHAGARAS', path: '/shop?category=Wedding+Ghagara', hasMegaMenu: 'ghagaras' },
+    { name: 'SURAT SILKS', path: '/shop?category=Surat+Pattu', hasMegaMenu: 'surat-silks' },
     { name: 'OFFERS & DEALS', path: '/shop?category=Single+Colour+Offer', isHighlight: true },
+    { name: 'ORDER QUERY', path: '/order-query', isOrderQuery: true },
     { name: 'ABOUT US', path: '/about' },
     { name: 'CONTACT', path: '/contact' },
   ];
@@ -262,49 +274,71 @@ const Navbar = () => {
           TIER 1: ROYAL HERITAGE ANNOUNCEMENT & TRUST TOP BAR (Collapses on scroll)
           ========================================================================= */}
       <div
-        className={`bg-[#3A0810] text-[#F5E6D3] text-[11px] px-4 tracking-wide border-b border-[#520C17] transition-all duration-300 overflow-hidden ${
-          isScrolled ? 'max-h-0 py-0 opacity-0 border-none' : 'max-h-12 py-1.5 opacity-100'
+        className={`bg-[#3A0810] text-[#F5E6D3] text-[11px] px-3 sm:px-6 tracking-wide border-b border-[#520C17] transition-all duration-300 ${
+          isScrolled ? 'max-h-0 py-0 opacity-0 border-none overflow-hidden' : 'py-1.5 opacity-100'
         }`}
       >
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-4 overflow-hidden">
           
-          {/* Left: Brand Trust & Wholesale Heritage */}
-          <div className="flex items-center gap-2">
-            <span className="flex items-center gap-1.5 font-bold text-[#E8A87C]">
-              <ShieldCheck size={13} className="text-[#E8A87C]" />
-              <span>SRI VIJAY LAXMI TEXTILES</span>
+          {/* Left: Brand Trust & Wholesale Heritage (Guaranteed Single Line, No Wrap) */}
+          <div className="flex items-center gap-2 shrink-0 whitespace-nowrap">
+            <span className="flex items-center gap-1.5 font-bold text-[#E8A87C] whitespace-nowrap">
+              <ShieldCheck size={13} className="text-[#E8A87C] shrink-0" />
+              <span className="tracking-wide">SRI VIJAY LAXMI TEXTILES</span>
             </span>
-            <span className="hidden sm:inline text-amber-200/50">•</span>
-            <span className="hidden sm:inline text-amber-100/80 font-medium">Direct Wholesale Manufacturer & Retail Since 1980</span>
-            <span className="hidden lg:inline bg-[#5C161D] text-[#E8A87C] px-2 py-0.2 text-[9px] font-bold rounded-full border border-[#E8A87C]/30">
+            <span className="hidden 2xl:inline text-amber-200/50">•</span>
+            <span className="hidden 2xl:inline text-amber-100/80 font-medium whitespace-nowrap">
+              Wholesale & Retail Since 1980
+            </span>
+            <span className="hidden sm:inline-flex items-center bg-[#5C161D] text-[#E8A87C] px-2 py-0.5 text-[9px] font-bold rounded-full border border-[#E8A87C]/30 whitespace-nowrap">
               SILK MARK CERTIFIED
             </span>
           </div>
 
-          {/* Right: Actions, WhatsApp & Support */}
-          <div className="flex items-center gap-3 sm:gap-5 text-[11px]">
-            <span className="hidden md:inline text-amber-100/70">
-              ⚡ Free Insured Shipping Across India
-            </span>
+          {/* Center: Luxury Rotating Value Proposition (Smooth, Single Line, Never Wraps) */}
+          <div className="hidden lg:flex items-center justify-center shrink truncate px-2 overflow-hidden">
+            <div className="flex items-center gap-1.5 text-amber-100/90 font-medium text-[11px] whitespace-nowrap truncate animate-in fade-in duration-300">
+              <span className="text-[#E8A87C] shrink-0">{topAnnouncements[announcementIdx].highlight}</span>
+              <span className="truncate">{topAnnouncements[announcementIdx].text}</span>
+            </div>
+          </div>
 
-            <span className="hidden md:inline text-amber-200/40">|</span>
+          {/* Right: Actions, WhatsApp & Support (Guaranteed Single Line, No Wrap) */}
+          <div className="flex items-center gap-2 sm:gap-3 text-[11px] shrink-0 whitespace-nowrap">
+            
+            <Link
+              to="/order-query"
+              className="hover:text-[#E8A87C] transition-colors flex items-center gap-1 text-amber-200/90 font-medium whitespace-nowrap shrink-0"
+              title="Open Direct Order & Lead Form"
+            >
+              <Sparkles size={12} className="text-[#E8A87C] shrink-0" />
+              <span>Order Query</span>
+            </Link>
 
-            <Link to="/track-order" className="hover:text-[#E8A87C] transition-colors flex items-center gap-1">
-              <Package size={12} className="text-[#E8A87C]" />
+            <span className="text-amber-200/40 hidden md:inline">|</span>
+
+            <Link
+              to="/track-order"
+              className="hover:text-[#E8A87C] transition-colors hidden md:flex items-center gap-1 whitespace-nowrap shrink-0"
+              title="Track Order Status"
+            >
+              <Package size={12} className="text-[#E8A87C] shrink-0" />
               <span>Track Order</span>
             </Link>
 
-            <span className="hidden sm:inline text-amber-200/40">|</span>
+            <span className="text-amber-200/40">|</span>
 
             <a
               href="https://wa.me/919394512326"
               target="_blank"
               rel="noreferrer"
-              className="bg-[#25D366]/20 hover:bg-[#25D366]/30 text-emerald-300 px-2.5 py-0.5 rounded-full font-bold flex items-center gap-1.5 border border-emerald-500/30 transition-all"
+              className="bg-[#25D366]/20 hover:bg-[#25D366]/30 text-emerald-300 px-2.5 py-0.5 rounded-full font-bold flex items-center gap-1.5 border border-emerald-500/30 transition-all whitespace-nowrap shrink-0"
+              title="Chat on WhatsApp: +91 93945 12326"
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-              <Phone size={10} />
-              <span>WhatsApp: +91 93945 12326</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
+              <Phone size={10} className="shrink-0" />
+              <span className="hidden xl:inline">WhatsApp:</span>
+              <span>+91 93945 12326</span>
             </a>
           </div>
 
@@ -558,12 +592,12 @@ const Navbar = () => {
                 </button>
               ) : (
                 <Link
-                  to="/login"
-                  className="flex items-center gap-1.5 px-3.5 py-1.5 bg-[#4A0E17] hover:bg-[#32070D] text-white text-xs font-bold rounded-full transition-all shadow-xs hover:shadow-md"
-                  title="Sign In to Your Account"
+                  to="/order-query"
+                  className="flex items-center gap-1.5 px-3.5 py-1.5 bg-gradient-to-r from-[#4A0E17] to-[#BE185D] hover:from-[#32070D] hover:to-[#9F1239] text-white text-xs font-bold rounded-full transition-all shadow-xs hover:shadow-md"
+                  title="Direct Order & Inquiry"
                 >
-                  <User size={14} />
-                  <span>Sign In</span>
+                  <Sparkles size={13} className="text-amber-300" />
+                  <span>Order Now</span>
                 </Link>
               )}
 
@@ -662,9 +696,9 @@ const Navbar = () => {
         onMouseLeave={handleMenuMouseLeave}
         className="hidden lg:block bg-[#4A0E17] border-b border-[#32070D] select-none relative shadow-md z-30"
       >
-        <div className="max-w-7xl mx-auto px-2 sm:px-4 xl:px-6 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6">
           
-          <div className="w-full flex items-center justify-between gap-0.5 xl:gap-1">
+          <div className="w-full flex items-center justify-between gap-1 overflow-x-auto no-scrollbar py-0.5">
             {primaryNavLinks.map((item, idx) => {
               const isActive = location.pathname + location.search === item.path;
               const hasMega = item.hasMegaMenu;
@@ -678,26 +712,29 @@ const Navbar = () => {
                   <Link
                     to={item.path}
                     onClick={() => setActiveMegaMenu(null)}
-                    className={`inline-flex items-center gap-0.5 py-2.5 px-1.5 lg:px-1.5 xl:px-2.5 2xl:px-3 text-[10px] lg:text-[10.5px] xl:text-[11px] 2xl:text-[11.5px] font-bold tracking-[0.03em] uppercase transition-all whitespace-nowrap ${
+                    className={`inline-flex items-center gap-1 py-2.5 px-2 xl:px-3 text-[11px] xl:text-[11.5px] font-bold tracking-[0.03em] uppercase transition-all whitespace-nowrap ${
                       item.isHighlight
                         ? 'text-[#FDE68A] hover:text-white font-black'
+                        : item.isOrderQuery
+                        ? 'text-amber-200 hover:text-white flex items-center gap-1 bg-[#5C161D]/70 hover:bg-[#5C161D] px-2.5 py-1 rounded-full border border-amber-300/30'
                         : isActive
                         ? 'text-[#E8A87C]'
                         : 'text-[#F5E6D3] hover:text-[#E8A87C]'
                     }`}
                   >
+                    {item.isOrderQuery && <Sparkles size={11} className="text-[#E8A87C]" />}
                     <span>{item.name}</span>
                     {hasMega && (
                       <ChevronDown 
-                        size={10} 
+                        size={11} 
                         className={`transition-transform duration-150 opacity-80 ${activeMegaMenu === item.hasMegaMenu ? 'rotate-180 text-[#E8A87C]' : ''}`} 
                       />
                     )}
                   </Link>
 
                   {/* Active Indicator Underline */}
-                  {isActive && (
-                    <div className="absolute bottom-0 left-1 right-1 h-0.5 bg-[#E8A87C]"></div>
+                  {isActive && !item.isOrderQuery && (
+                    <div className="absolute bottom-0 left-2 right-2 h-0.5 bg-[#E8A87C]"></div>
                   )}
                 </div>
               );
@@ -738,7 +775,7 @@ const Navbar = () => {
                   onClick={() => setActiveMegaMenu(null)}
                   className="text-xs font-bold text-[#4A0E17] hover:text-[#D97706] flex items-center gap-1 bg-[#FAF7F2] px-3.5 py-1.5 rounded-full border border-[#E5DDD0] transition-colors"
                 >
-                  <span>Explore Complete 13-Catalog Store</span>
+                  <span>Explore Complete 11-Catalog Store</span>
                   <ArrowRight size={13} />
                 </Link>
               </div>
@@ -842,7 +879,7 @@ const Navbar = () => {
                   </div>
 
                   <Link
-                    to="/shop?category=SINGAL+COLOUR+OFFER"
+                    to="/shop?category=Single+Colour+Offer"
                     onClick={() => setActiveMegaMenu(null)}
                     className="block text-center py-2 bg-[#4A0E17] hover:bg-[#32070D] text-white text-xs font-bold rounded-xl shadow-xs transition-colors"
                   >
@@ -874,7 +911,7 @@ const Navbar = () => {
                   </div>
                   <div>
                     <h4 className="text-sm font-bold text-[#4A0E17] font-serif uppercase tracking-wider">
-                      Official Sri Vijay Laxmi Saree Catalogues (13 Weaves)
+                      Official Sri Vijay Laxmi Saree Catalogues (11 Weaves)
                     </h4>
                     <p className="text-[11px] text-gray-500">
                       Explore our complete catalog range manufactured with pure silk, zari, and fine cottons
@@ -891,9 +928,9 @@ const Navbar = () => {
                 </Link>
               </div>
 
-              {/* Grid of 13 Catalogues with Visual Photos */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-3">
-                {initialCategories.slice(0, 13).map((cat, idx) => (
+              {/* Grid of 11 Catalogues with Visual Photos */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
+                {initialCategories.slice(0, 11).map((cat, idx) => (
                   <Link
                     key={idx}
                     to={`/shop?category=${encodeURIComponent(cat.name)}`}
@@ -902,9 +939,13 @@ const Navbar = () => {
                   >
                     <div className="w-full aspect-square rounded-lg overflow-hidden mb-2 bg-gray-100 relative">
                       <img
-                        src={cat.image || 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=300&q=80'}
+                        src={cat.image || 'https://do9uy4stciz2v.cloudfront.net/-NXLNLGNrL_A2urc7cXg/products/-OdarSY_BnF4pM-wXkgc.jpg'}
                         alt={cat.name}
                         className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-300"
+                        onError={(e) => {
+                          e.currentTarget.onerror = null;
+                          e.currentTarget.src = 'https://do9uy4stciz2v.cloudfront.net/-NXLNLGNrL_A2urc7cXg/products/-OdarSY_BnF4pM-wXkgc.jpg';
+                        }}
                       />
                       <span className="absolute bottom-1 right-1 bg-black/70 text-white text-[8px] font-bold px-1.5 py-0.2 rounded">
                         {cat.itemCount || 15}+ Items
@@ -920,6 +961,194 @@ const Navbar = () => {
                 ))}
               </div>
 
+            </div>
+          </div>
+        )}
+
+        {/* =========================================================================
+            DROPDOWN: GHAGARAS & LEHENGAS (Bridal, Partywear, Kids)
+            ========================================================================= */}
+        {activeMegaMenu === 'ghagaras' && (
+          <div 
+            className="absolute top-full left-0 right-0 bg-white border-b-2 border-[#4A0E17] shadow-2xl z-50 text-[#1F1916] animate-in fade-in slide-in-from-top-1 duration-100"
+            onMouseEnter={() => handleMenuMouseEnter('ghagaras')}
+            onMouseLeave={handleMenuMouseLeave}
+          >
+            <div className="max-w-7xl mx-auto p-6">
+              <div className="flex items-center justify-between pb-3 mb-4 border-b border-[#EDE5D8]">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-8 h-8 rounded-full bg-[#FAF4EE] flex items-center justify-center text-[#4A0E17] font-bold">
+                    <Sparkles size={16} />
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-bold text-[#4A0E17] font-serif uppercase tracking-wider">
+                      Ghagara & Lehenga Trousseau Collection
+                    </h4>
+                    <p className="text-[11px] text-gray-500">
+                      Handcrafted bridal, festive, and kids ghagara cholis with grand flared resham & zari borders
+                    </p>
+                  </div>
+                </div>
+                <Link
+                  to="/shop?category=Wedding+Ghagara"
+                  onClick={() => setActiveMegaMenu(null)}
+                  className="text-xs font-bold text-[#4A0E17] hover:underline flex items-center gap-1"
+                >
+                  View All Ghagaras <ChevronRight size={13} />
+                </Link>
+              </div>
+
+              <div className="grid grid-cols-3 gap-4">
+                <Link
+                  to="/shop?category=Wedding+Ghagara"
+                  onClick={() => setActiveMegaMenu(null)}
+                  className="group p-4 rounded-xl bg-[#FAF7F2] border border-[#E5DDD0] hover:border-[#4A0E17] hover:bg-white transition-all flex gap-3.5 items-center shadow-2xs hover:shadow-md"
+                >
+                  <div className="w-16 h-20 rounded-lg overflow-hidden bg-gray-100 shrink-0 border border-[#EDE5D8]">
+                    <img
+                      src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=300&q=80"
+                      alt="Wedding Ghagara"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <div>
+                    <span className="inline-block bg-[#4A0E17] text-[#E8A87C] text-[9px] font-bold px-2 py-0.5 rounded mb-1">Bridal Special</span>
+                    <h5 className="text-xs font-bold text-gray-900 group-hover:text-[#4A0E17]">Wedding Ghagara</h5>
+                    <p className="text-[11px] text-gray-500 mt-0.5">Heavy designer bridal wedding ghagaras with opulent zari flare</p>
+                    <span className="text-[10px] text-[#D97706] font-bold mt-1.5 inline-flex items-center gap-0.5">Explore Collection →</span>
+                  </div>
+                </Link>
+
+                <Link
+                  to="/shop?category=Fancy+Ghagara"
+                  onClick={() => setActiveMegaMenu(null)}
+                  className="group p-4 rounded-xl bg-[#FAF7F2] border border-[#E5DDD0] hover:border-[#4A0E17] hover:bg-white transition-all flex gap-3.5 items-center shadow-2xs hover:shadow-md"
+                >
+                  <div className="w-16 h-20 rounded-lg overflow-hidden bg-gray-100 shrink-0 border border-[#EDE5D8]">
+                    <img
+                      src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=300&q=80"
+                      alt="Fancy Ghagara"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <div>
+                    <span className="inline-block bg-[#FAF4EE] text-[#4A0E17] border border-[#E5DDD0] text-[9px] font-bold px-2 py-0.5 rounded mb-1">Partywear</span>
+                    <h5 className="text-xs font-bold text-gray-900 group-hover:text-[#4A0E17]">Fancy Ghagara</h5>
+                    <p className="text-[11px] text-gray-500 mt-0.5">Big size partywear ghagaras with flared resham embroidery</p>
+                    <span className="text-[10px] text-[#D97706] font-bold mt-1.5 inline-flex items-center gap-0.5">Explore Collection →</span>
+                  </div>
+                </Link>
+
+                <Link
+                  to="/shop?category=Baby+Ghagara"
+                  onClick={() => setActiveMegaMenu(null)}
+                  className="group p-4 rounded-xl bg-[#FAF7F2] border border-[#E5DDD0] hover:border-[#4A0E17] hover:bg-white transition-all flex gap-3.5 items-center shadow-2xs hover:shadow-md"
+                >
+                  <div className="w-16 h-20 rounded-lg overflow-hidden bg-gray-100 shrink-0 border border-[#EDE5D8]">
+                    <img
+                      src="https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=300&q=80"
+                      alt="Baby Ghagara"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <div>
+                    <span className="inline-block bg-pink-100 text-pink-700 text-[9px] font-bold px-2 py-0.5 rounded mb-1">Kids Festive</span>
+                    <h5 className="text-xs font-bold text-gray-900 group-hover:text-[#4A0E17]">Baby & Kids Ghagara</h5>
+                    <p className="text-[11px] text-gray-500 mt-0.5">Festive kids and baby ghagara cholis in radiant silk hues</p>
+                    <span className="text-[10px] text-[#D97706] font-bold mt-1.5 inline-flex items-center gap-0.5">Explore Collection →</span>
+                  </div>
+                </Link>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* =========================================================================
+            DROPDOWN: SURAT SILKS & FACTORY WHOLESALE DEALS
+            ========================================================================= */}
+        {activeMegaMenu === 'surat-silks' && (
+          <div 
+            className="absolute top-full left-0 right-0 bg-white border-b-2 border-[#4A0E17] shadow-2xl z-50 text-[#1F1916] animate-in fade-in slide-in-from-top-1 duration-100"
+            onMouseEnter={() => handleMenuMouseEnter('surat-silks')}
+            onMouseLeave={handleMenuMouseLeave}
+          >
+            <div className="max-w-7xl mx-auto p-6">
+              <div className="flex items-center justify-between pb-3 mb-4 border-b border-[#EDE5D8]">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-8 h-8 rounded-full bg-[#FAF4EE] flex items-center justify-center text-[#4A0E17] font-bold">
+                    <Tag size={16} />
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-bold text-[#4A0E17] font-serif uppercase tracking-wider">
+                      Surat Silks & Factory Wholesale Deals
+                    </h4>
+                    <p className="text-[11px] text-gray-500">
+                      Direct manufacturer pricing on soft silks, crepe digital prints, and bulk gifting specials
+                    </p>
+                  </div>
+                </div>
+                <Link
+                  to="/shop?category=Surat+Pattu"
+                  onClick={() => setActiveMegaMenu(null)}
+                  className="text-xs font-bold text-[#4A0E17] hover:underline flex items-center gap-1"
+                >
+                  View All Surat Silks <ChevronRight size={13} />
+                </Link>
+              </div>
+
+              <div className="grid grid-cols-4 gap-4">
+                <Link
+                  to="/shop?category=Surat+Pattu"
+                  onClick={() => setActiveMegaMenu(null)}
+                  className="group p-3.5 rounded-xl bg-[#FAF7F2] border border-[#E5DDD0] hover:border-[#4A0E17] hover:bg-white transition-all flex flex-col justify-between shadow-2xs hover:shadow-md"
+                >
+                  <div>
+                    <span className="inline-block bg-[#4A0E17] text-[#E8A87C] text-[8px] font-bold px-1.5 py-0.5 rounded mb-1">Pure Silk Look</span>
+                    <h5 className="text-xs font-bold text-gray-900 group-hover:text-[#4A0E17]">Surat Pattu Silk</h5>
+                    <p className="text-[11px] text-gray-500 mt-1">Lustrous silk with intricate golden temple zari borders</p>
+                  </div>
+                  <span className="text-[10px] text-[#D97706] font-bold mt-2.5 inline-flex items-center gap-0.5">View Sarees →</span>
+                </Link>
+
+                <Link
+                  to="/shop?category=Surat+Printed"
+                  onClick={() => setActiveMegaMenu(null)}
+                  className="group p-3.5 rounded-xl bg-[#FAF7F2] border border-[#E5DDD0] hover:border-[#4A0E17] hover:bg-white transition-all flex flex-col justify-between shadow-2xs hover:shadow-md"
+                >
+                  <div>
+                    <span className="inline-block bg-[#FAF4EE] text-[#4A0E17] border border-[#E5DDD0] text-[8px] font-bold px-1.5 py-0.5 rounded mb-1">Floral & Digital</span>
+                    <h5 className="text-xs font-bold text-gray-900 group-hover:text-[#4A0E17]">Surat Printed Crepe</h5>
+                    <p className="text-[11px] text-gray-500 mt-1">Lightweight digital printed georgette & Kasturi crepe</p>
+                  </div>
+                  <span className="text-[10px] text-[#D97706] font-bold mt-2.5 inline-flex items-center gap-0.5">View Sarees →</span>
+                </Link>
+
+                <Link
+                  to="/shop?category=Surat+Pouch"
+                  onClick={() => setActiveMegaMenu(null)}
+                  className="group p-3.5 rounded-xl bg-[#FAF7F2] border border-[#E5DDD0] hover:border-[#4A0E17] hover:bg-white transition-all flex flex-col justify-between shadow-2xs hover:shadow-md"
+                >
+                  <div>
+                    <span className="inline-block bg-[#FAF4EE] text-[#4A0E17] border border-[#E5DDD0] text-[8px] font-bold px-1.5 py-0.5 rounded mb-1">Gifting Special</span>
+                    <h5 className="text-xs font-bold text-gray-900 group-hover:text-[#4A0E17]">Surat Pouch Packing</h5>
+                    <p className="text-[11px] text-gray-500 mt-1">Everyday gifting soft silk sarees in luxury pouch box</p>
+                  </div>
+                  <span className="text-[10px] text-[#D97706] font-bold mt-2.5 inline-flex items-center gap-0.5">View Sarees →</span>
+                </Link>
+
+                <Link
+                  to="/shop?category=Single+Colour+Offer"
+                  onClick={() => setActiveMegaMenu(null)}
+                  className="group p-3.5 rounded-xl bg-gradient-to-br from-[#4A0E17] to-[#BE185D] text-white transition-all flex flex-col justify-between shadow-xs hover:shadow-md"
+                >
+                  <div>
+                    <span className="inline-block bg-amber-400 text-black text-[8px] font-black px-1.5 py-0.5 rounded mb-1">Wholesale Flat 40%</span>
+                    <h5 className="text-xs font-bold text-white">Single Colour Offer</h5>
+                    <p className="text-[11px] text-amber-100/90 mt-1">Direct manufacturer wholesale single color bundle deals</p>
+                  </div>
+                  <span className="text-[10px] text-amber-300 font-bold mt-2.5 inline-flex items-center gap-0.5">Grab Deals →</span>
+                </Link>
+              </div>
             </div>
           </div>
         )}
@@ -1034,6 +1263,14 @@ const Navbar = () => {
 
               {/* General Pages */}
               <div className="space-y-1">
+                <Link
+                  to="/order-query"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center gap-2.5 px-3 py-2 text-gray-800 font-bold bg-[#FAF4EE] text-[#4A0E17] rounded-lg border border-[#E5DDD0]"
+                >
+                  <Sparkles size={15} className="text-[#D97706]" />
+                  <span>Order & Saree Query Form</span>
+                </Link>
                 <Link
                   to="/track-order"
                   onClick={() => setMobileMenuOpen(false)}

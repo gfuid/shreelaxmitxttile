@@ -1,96 +1,140 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Sparkles, ArrowRight, Layers, Eye } from 'lucide-react';
+import { Sparkles, ArrowRight, ShieldCheck, CheckCircle2 } from 'lucide-react';
 
 const CollectionsPage = () => {
   const collections = [
     {
-      id: 'banarasi',
-      title: 'Royal Banarasi Katan Silk',
-      tagline: 'Kadwa Jaals & Floral Butis Woven in Kashi',
-      description: 'The pinnacle of Indian handloom heritage. High-twist mulberry katan silk woven with pure silver and gold dipped zari threads. Timeless bridal and festival heirlooms.',
-      priceRange: 'Starting from ₹2,999',
-      image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=85',
-      link: '/shop?category=Banarasi+Silk',
-      itemCount: '120+ Weaves',
-      bgTag: 'Heirloom Masterpiece',
+      id: 'dharmavaram-pattu',
+      title: 'Grand Dharmavaram Bridal Pattu',
+      category: 'Dharmavaram Pattu',
+      tagline: 'Silk Mark Certified Pure Mulberry Silk & Temple Zari Borders',
+      description: 'Auspicious South Indian heritage weaves featuring heavy golden temple borders, contrast grand pallus, and pure silk mark certification. Direct wholesale rates from our Hyderabad looms.',
+      priceRange: '₹1,500 Direct Loom',
+      image: 'https://cdn.quicksell.co/-NXLNLGNrL_A2urc7cXg/products_400/-OQmalLAtk_pT71qG9Wo.jpg',
+      link: '/shop?category=Dharmavaram+Pattu',
+      itemCount: '10+ Master Weaves',
+      bgTag: 'Silk Mark Certified',
     },
     {
-      id: 'kanjivaram',
-      title: 'Kanjivaram Temple Heritage',
-      tagline: 'Interlocking Korvai Borders & Auspicious Mayil Motifs',
-      description: 'Handcrafted South Indian silks featuring heavyweight temple motifs, contrast Korvai borders, and authentic gold zari pallus designed for traditional muhurthams.',
-      priceRange: 'Starting from ₹3,499',
-      image: 'https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=800&q=85',
-      link: '/shop?category=Kanjivaram+Silk',
-      itemCount: '85+ Weaves',
-      bgTag: 'South Grandeur',
+      id: 'designer-pattu-gadwal',
+      title: 'Designer Pattu Gadwal',
+      category: 'Designer Pattu Gadwal',
+      tagline: 'Heritage Pure Silk with Authentic Kuttu Interlocking Borders',
+      description: 'Prestigious Gadwal handloom silk sarees renowned for lightweight pure silk bodies attached with heavyweight pure zari borders and contrast artistic pallus.',
+      priceRange: '₹4,850 Direct Factory',
+      image: 'https://do9uy4stciz2v.cloudfront.net/-NXLNLGNrL_A2urc7cXg/products/-OdarSY_BnF4pM-wXkgc.jpg',
+      link: '/shop?category=Designer+Pattu+Gadwal',
+      itemCount: '10+ Weaves',
+      bgTag: 'Royal Heritage',
     },
     {
-      id: 'organza',
-      title: 'Pastel Hand-Painted Organza',
-      tagline: 'Feather-Light Sheer Drape with Scalloped Edges',
-      description: 'Ethereal sheer organza silks in blush pastels, hand-painted water lily florals, fine pearl scalloped borders, and delicately embroidered blouse pairings.',
-      priceRange: 'Starting from ₹1,999',
-      image: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=800&q=85',
-      link: '/shop?category=Organza+Sarees',
-      itemCount: '60+ Weaves',
-      bgTag: 'Modern Grace',
+      id: 'banaras-wed-cream',
+      title: 'Banaras Wed Cream',
+      category: 'Banaras Wed Cream',
+      tagline: 'Auspicious Heritage Cream & Gold Katan Silks',
+      description: 'Opulent Banarasi wedding cream and golden brocade sarees handwoven with fine floral jaals, shikargah hunting motifs, and delicate butis for muhurthams and rituals.',
+      priceRange: 'Starting from ₹1,110',
+      image: 'https://cdn.quicksell.co/-NXLNLGNrL_A2urc7cXg/products_400/-OM6NfPNKJ2Pk83g0g4I.jpg',
+      link: '/shop?category=Banaras+Wed+Cream',
+      itemCount: '11+ Weaves',
+      bgTag: 'Bridal Auspicious',
     },
     {
-      id: 'georgette',
-      title: 'Georgette & Foil Mirror Work',
-      tagline: 'Fluid Party Wear & Sangeet Soirée Drapes',
-      description: 'Body-hugging breezy faux georgettes with shimmering foil mirror borders, ton-sur-ton sequin embroidery, and vibrant festive color palettes.',
-      priceRange: 'Starting from ₹1,899',
-      image: 'https://images.unsplash.com/photo-1609357605129-26f69add5d6e?auto=format&fit=crop&w=800&q=85',
-      link: '/shop?category=Chiffon+%26+Georgette',
-      itemCount: '75+ Weaves',
-      bgTag: 'Party Glamour',
+      id: 'wedding-ghagara',
+      title: 'Bridal Wedding Ghagara',
+      category: 'Wedding Ghagara',
+      tagline: 'Heavy Flared Resham & Zari Bridal Lehenga Cholis',
+      description: 'Grand bridal and sangeet wedding ghagaras with multi-tiered circular flares, elaborate resham embroidery, micro-velvet blouses, and ornate designer dupattas.',
+      priceRange: '₹1,775 – ₹2,460',
+      image: 'https://cdn.quicksell.co/-NXLNLGNrL_A2urc7cXg/products_400/-OVr8xe0qy6e5m-oTGDt.jpg',
+      link: '/shop?category=Wedding+Ghagara',
+      itemCount: '9+ Grand Sets',
+      bgTag: 'Bridal Trousseau',
     },
     {
-      id: 'chanderi',
-      title: 'Chanderi & Tussar Cotton Silks',
-      tagline: 'Lightweight Golden Ashrafi Buti Weaves',
-      description: 'Breathable, feather-light handloom cotton-silks from central India. Ideal for daytime puja rituals, family gatherings, and subtle office luxury.',
-      priceRange: 'Starting from ₹1,499',
-      image: 'https://images.unsplash.com/photo-1610030469668-9359e8979313?auto=format&fit=crop&w=800&q=85',
-      link: '/shop?category=Chanderi+%26+Tussar',
-      itemCount: '50+ Weaves',
-      bgTag: 'Everyday Silk',
+      id: 'fancy-ghagara',
+      title: 'Partywear Fancy Ghagara',
+      category: 'Fancy Ghagara',
+      tagline: 'Flared Resham Embroidery & Sangeet Party Drapes',
+      description: 'Glamorous festive partywear and big size ghagaras crafted with rich flared resham threads, contrast borders, and comfortable lightweight lining for celebrations.',
+      priceRange: '₹950 – ₹1,080',
+      image: 'https://cdn.quicksell.co/-NXLNLGNrL_A2urc7cXg/products_400/-Olv0mNDF0bIMMRKjEPG.jpg',
+      link: '/shop?category=Fancy+Ghagara',
+      itemCount: '22+ Styles',
+      bgTag: 'Festive Bestseller',
     },
     {
-      id: 'ready-to-wear',
-      title: '1-Minute Ready-to-Wear Sarees',
-      tagline: 'Pre-Pleated Precision for Instant Elegance',
-      description: 'Say goodbye to pleating struggles. Pre-stitched with adjustable waist hooks, pre-draped pleats, and matching readymade padded designer blouses.',
-      priceRange: 'Starting from ₹2,299',
-      image: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=800&q=85',
-      link: '/shop?category=Ready+To+Wear+Sarees',
-      itemCount: '40+ Styles',
-      bgTag: 'Instant Drape',
+      id: 'baby-ghagara',
+      title: 'Kids & Baby Festive Ghagara',
+      category: 'Baby Ghagara',
+      tagline: 'Charming Silk Ghagara Cholis for Young Princesses',
+      description: 'Vibrant and comfortable festive kids ghagara cholis woven in cheerful silk colors with soft skin-friendly inner linings and delicate golden border trims.',
+      priceRange: 'Special ₹699',
+      image: 'https://cdn.quicksell.co/-NXLNLGNrL_A2urc7cXg/products_400/-Olv3N1RcUGDBn_byQm7.jpg',
+      link: '/shop?category=Baby+Ghagara',
+      itemCount: '12+ Styles',
+      bgTag: 'Kids Festive',
     },
     {
-      id: 'bridal',
-      title: 'Grand Bridal Trousseau Sanctuary',
-      tagline: 'Bespoke Heirlooms for the Royal Indian Bride',
-      description: 'High-density pure tissue silks, kaddhwa jaals, real gold electroplated threads, and heavy stone work crafted exclusively for Indian brides.',
-      priceRange: 'Starting from ₹4,999',
-      image: 'https://images.unsplash.com/photo-1609357605129-26f69add5d6e?auto=format&fit=crop&w=800&q=85',
-      link: '/shop?category=Bridal+%26+Wedding',
-      itemCount: '90+ Masterpieces',
-      bgTag: 'Bridal Royalty',
+      id: 'cotton-narayanpet',
+      title: 'Handloom Cotton Narayanpet',
+      category: 'COTTON NARAYANPET',
+      tagline: 'Traditional Checks, Temple Borders & Pure Breathable Cotton',
+      description: 'Authentic Narayanpet handloom cotton sarees featuring classic butas, checks, and vibrant contrast temple borders. Ideal for puja ceremonies and elegant daily luxury.',
+      priceRange: 'Direct Loom ₹890',
+      image: 'https://do9uy4stciz2v.cloudfront.net/-NXLNLGNrL_A2urc7cXg/products/-Oxz1jj4Yca3qLJ0MJW3.jpg',
+      link: '/shop?category=COTTON+NARAYANPET',
+      itemCount: '8+ Weaves',
+      bgTag: 'Pure Handloom',
     },
     {
-      id: 'lehengas',
-      title: 'Designer Flared Lehengas',
-      tagline: 'Micro-Velvet & Resham Thread Flares',
-      description: 'Multi-tiered circular flares with double can-can, matching designer cholis, and four-sided embroidered net dupattas for grand wedding receptions.',
-      priceRange: 'Starting from ₹5,499',
-      image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=85',
-      link: '/shop?category=Designer+Lehengas',
-      itemCount: '30+ Designs',
-      bgTag: 'Reception Luxe',
+      id: 'surat-pattu',
+      title: 'Surat Pattu Silk Sarees',
+      category: 'Surat Pattu',
+      tagline: 'Lustrous Dual-Tone Silks with Rich Golden Zari Weaving',
+      description: 'Rich festive Surat Pattu silk sarees featuring glistening golden zari work, traditional peacock and floral border motifs, and graceful fluid draping.',
+      priceRange: '₹730 – ₹870',
+      image: 'https://cdn.quicksell.co/-NXLNLGNrL_A2urc7cXg/products_400/-OZDgVsJRcjIBxHcybqp.jpg',
+      link: '/shop?category=Surat+Pattu',
+      itemCount: '11+ Styles',
+      bgTag: 'Festive Radiance',
+    },
+    {
+      id: 'surat-pouch',
+      title: 'Surat Pouch Silk Sarees',
+      category: 'Surat Pouch',
+      tagline: 'Soft Silk Sarees in Special Luxury Pouch Packing',
+      description: 'Featherlight and smooth soft silk sarees packaged in individual zip pouches. Beloved for gifting during weddings, housewarmings, and everyday celebrations.',
+      priceRange: 'Starting from ₹350',
+      image: 'https://cdn.quicksell.co/-NXLNLGNrL_A2urc7cXg/products_400/-Ox5SbJ78Va4rRaIz45t.jpg',
+      link: '/shop?category=Surat+Pouch',
+      itemCount: '24+ Varieties',
+      bgTag: 'Pouch Special',
+    },
+    {
+      id: 'surat-printed',
+      title: 'Surat Printed Sarees',
+      category: 'Surat Printed',
+      tagline: 'Digital Floral Georgette & Kasturi Crepe Daily Drapes',
+      description: 'Super lightweight digital printed sarees in floral, botanical, and geometric patterns on soft chiffon, georgette, and Kasturi crepe for effortless daily elegance.',
+      priceRange: 'Wholesale ₹260',
+      image: 'https://cdn.quicksell.co/-NXLNLGNrL_A2urc7cXg/products_400/-OUEaRa2W-YKrUNH1FUA.jpg',
+      link: '/shop?category=Surat+Printed',
+      itemCount: '11+ Designs',
+      bgTag: 'Everyday Chic',
+    },
+    {
+      id: 'single-colour-offer',
+      title: 'Single Colour Wholesale Specials',
+      category: 'Single Colour Offer',
+      tagline: 'Exclusive Manufacturer Flat 40% Off Bulk Deals',
+      description: 'Direct manufacturer wholesale specials on pure single-tone silk sarees. Unbeatable factory rates for bulk wedding orders, resellers, and festive family gifting.',
+      priceRange: 'Flat Wholesale ₹1,500',
+      image: 'https://cdn.quicksell.co/-NXLNLGNrL_A2urc7cXg/products_400/-OdsOBarhJkNk_LvqNyB.jpg',
+      link: '/shop?category=Single+Colour+Offer',
+      itemCount: '11+ Offers',
+      bgTag: 'Flat 40% Off',
     },
   ];
 
@@ -98,17 +142,18 @@ const CollectionsPage = () => {
     <div className="bg-[#F8F4EE] min-h-screen">
       
       {/* Hero Header */}
-      <section className="bg-gradient-to-b from-[#380B12] to-[#24040A] text-white py-16 px-4 text-center relative overflow-hidden border-b border-[#E8A87C]/30">
+      <section className="bg-gradient-to-b from-[#380B12] via-[#2E070F] to-[#24040A] text-white py-16 px-4 text-center relative overflow-hidden border-b border-[#E8A87C]/30">
+        <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#E8A87C_1px,transparent_1px)] [background-size:22px_22px] pointer-events-none"></div>
         <div className="container max-w-3xl relative z-10 space-y-3">
           <div className="inline-flex items-center gap-1.5 bg-[#E8A87C]/20 border border-[#E8A87C]/40 text-[#E8A87C] px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-widest">
             <Sparkles size={13} className="text-amber-300" />
-            <span>Curated Weave Lookbook</span>
+            <span>Showroom Catalogues • 11 Weave Categories</span>
           </div>
           <h1 className="font-royal text-3xl sm:text-5xl font-black tracking-wider text-white">
-            SIGNATURE COLLECTIONS
+            AUTHENTIC WEAVE COLLECTIONS
           </h1>
           <p className="text-xs sm:text-sm text-gray-300 max-w-xl mx-auto leading-relaxed">
-            Explore authentic handloom traditions across Varanasi, Kanchipuram, Chanderi, and contemporary bridal ateliers.
+            Direct weaver wholesale collections from Sri Vijaylaxmi Textiles, Rikab Gunj, Hyderabad. 100% Silk Mark Certified pure bridal pattu, Gadwal silks, Banarasi brocades, and festive ghagaras.
           </p>
         </div>
       </section>
@@ -123,17 +168,22 @@ const CollectionsPage = () => {
                 className="bg-white rounded-3xl border border-[#E5DDD0] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col justify-between group"
               >
                 {/* Photo Header */}
-                <div className="relative aspect-[16/9] w-full overflow-hidden bg-gray-100">
+                <div className="relative aspect-[16/10] w-full overflow-hidden bg-gray-100">
                   <img
                     src={col.image}
                     alt={col.title}
                     className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                    loading="lazy"
+                    onError={(e) => {
+                      e.currentTarget.onerror = null;
+                      e.currentTarget.src = 'https://do9uy4stciz2v.cloudfront.net/-NXLNLGNrL_A2urc7cXg/products/-OdarSY_BnF4pM-wXkgc.jpg';
+                    }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent"></div>
                   
                   {/* Badge Pills */}
                   <div className="absolute top-3 left-3 z-10">
-                    <span className="bg-white/90 backdrop-blur-xs text-[#380B12] text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full border border-white/40 shadow-xs">
+                    <span className="bg-[#4A0E17] text-[#E8A87C] text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full border border-[#E8A87C]/30 shadow-md">
                       {col.bgTag}
                     </span>
                   </div>
@@ -142,7 +192,7 @@ const CollectionsPage = () => {
                     <span className="text-[11px] font-bold text-amber-300 uppercase tracking-wider">
                       {col.itemCount}
                     </span>
-                    <span className="text-xs font-bold text-white bg-black/50 backdrop-blur-xs px-2.5 py-0.5 rounded-full">
+                    <span className="text-xs font-bold text-white bg-black/60 backdrop-blur-xs px-2.5 py-0.5 rounded-full border border-white/20">
                       {col.priceRange}
                     </span>
                   </div>

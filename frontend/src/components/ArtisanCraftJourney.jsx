@@ -12,7 +12,7 @@ const ArtisanCraftJourney = () => {
       subtitle: 'Pure Grade-A Natural Fibers',
       description: 'We source raw high-twist Katan and Mulberry silk yarns directly from certified sericulture clusters, ensuring unmatched tensile strength, natural luster, and a fluid drape.',
       highlight: '100% Pure Mulberry Cocoon Filament',
-      image: 'https://images.unsplash.com/photo-1610030469668-9359e8979313?auto=format&fit=crop&w=700&q=80',
+      image: 'https://do9uy4stciz2v.cloudfront.net/-NXLNLGNrL_A2urc7cXg/products/-OQmalLAtk_pT71qG9Wo.jpg',
     },
     {
       id: 2,
@@ -21,7 +21,7 @@ const ArtisanCraftJourney = () => {
       subtitle: 'Electroplated Metallic Threads',
       description: 'Our signature Zari is spun using fine silver-coated micro-wires bonded with pure silk cores, then dipped in liquid gold for a luminous, non-tarnishing heirloom sheen.',
       highlight: 'Tested & Pure Metallic Zari Threads',
-      image: 'https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=700&q=80',
+      image: 'https://do9uy4stciz2v.cloudfront.net/-NXLNLGNrL_A2urc7cXg/products/-OdarSY_BnF4pM-wXkgc.jpg',
     },
     {
       id: 3,
@@ -30,7 +30,7 @@ const ArtisanCraftJourney = () => {
       subtitle: '180+ Hours of Master Artistry',
       description: 'Using traditional pit and shuttle looms, master weavers manually engrave intricate floral jaals, shikargah hunting motifs, and paisley butis without loose threads on the reverse.',
       highlight: 'Zero Loose Weft Floating Threads',
-      image: 'https://images.unsplash.com/photo-1609357605129-26f69add5d6e?auto=format&fit=crop&w=700&q=80',
+      image: 'https://cdn.quicksell.co/-NXLNLGNrL_A2urc7cXg/products_400/-OM6NfPNKJ2Pk83g0g4I.jpg',
     },
     {
       id: 4,
@@ -39,7 +39,7 @@ const ArtisanCraftJourney = () => {
       subtitle: 'Certified Quality Dispatch',
       description: 'Every completed saree undergoes a 5-point quality audit, receives the Silk Mark Government Hologram, and is nestled inside a breathable muslin velvet preservation box.',
       highlight: 'Government Certified Silk Mark Guarantee',
-      image: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=700&q=80',
+      image: 'https://do9uy4stciz2v.cloudfront.net/-NXLNLGNrL_A2urc7cXg/products/-OQr5R5elEx3F9ZTcwJ0.jpg',
     },
   ];
 
@@ -98,6 +98,10 @@ const ArtisanCraftJourney = () => {
                 src={steps[activeStep].image}
                 alt={steps[activeStep].title}
                 className="w-full h-full object-cover object-top transition-all duration-700"
+                onError={(e) => {
+                  e.currentTarget.onerror = null;
+                  e.currentTarget.src = 'https://do9uy4stciz2v.cloudfront.net/-NXLNLGNrL_A2urc7cXg/products/-OdarSY_BnF4pM-wXkgc.jpg';
+                }}
               />
               <div className="absolute top-3 right-3 bg-black/60 backdrop-blur-xs text-amber-200 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
                 Step {steps[activeStep].num} of 04

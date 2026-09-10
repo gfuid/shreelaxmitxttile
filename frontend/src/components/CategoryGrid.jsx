@@ -73,6 +73,10 @@ const CategoryGrid = () => {
                   alt={cat.name}
                   className="w-full h-full rounded-full object-cover"
                   loading="lazy"
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = 'https://do9uy4stciz2v.cloudfront.net/-NXLNLGNrL_A2urc7cXg/products/-OdarSY_BnF4pM-wXkgc.jpg';
+                  }}
                 />
               </div>
 

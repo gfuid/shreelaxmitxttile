@@ -6,9 +6,19 @@ export const WishlistProvider = ({ children }) => {
   const [wishlist, setWishlist] = useState(() => {
     try {
       const saved = localStorage.getItem('svl_wishlist');
-      return saved ? JSON.parse(saved) : ['prod_1', 'prod_3'];
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed)) {
+          // Filter out stale dummy IDs from previous iterations
+          const cleaned = parsed.filter(
+            (id) => typeof id === 'string' && id !== 'prod_1' && id !== 'prod_2' && id !== 'prod_3' && !id.startsWith('dummy')
+          );
+          return cleaned;
+        }
+      }
+      return [];
     } catch (e) {
-      return ['prod_1', 'prod_3'];
+      return [];
     }
   });
 
@@ -16,17 +26,23 @@ export const WishlistProvider = ({ children }) => {
     localStorage.setItem('svl_wishlist', JSON.stringify(wishlist));
   }, [wishlist]);
 
-  const toggleWishlist = (productId) => {
+  const toggleWishlist = (productOrId) => {
+    const id = typeof productOrId === 'object' && productOrId?._id ? productOrId._id : productOrId;
+    if (!id || typeof id !== 'string') return;
+
     setWishlist((prev) => {
-      if (prev.includes(productId)) {
-        return prev.filter((id) => id !== productId);
+      if (prev.includes(id)) {
+        return prev.filter((item) => item !== id);
       } else {
-        return [...prev, productId];
+        return [...prev, id];
       }
     });
   };
 
-  const isInWishlist = (productId) => wishlist.includes(productId);
+  const isInWishlist = (productOrId) => {
+    const id = typeof productOrId === 'object' && productOrId?._id ? productOrId._id : productOrId;
+    return Boolean(id && wishlist.includes(id));
+  };
 
   const clearWishlist = () => {
     setWishlist([]);
@@ -41,6 +57,7 @@ export const WishlistProvider = ({ children }) => {
         toggleWishlist,
         isInWishlist,
         clearWishlist,
+        setWishlist,
       }}
     >
       {children}

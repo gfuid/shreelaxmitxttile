@@ -46,7 +46,7 @@ const OccasionShowcase = () => {
       subtitle: 'Lightweight Printed Georgette & Soft Silks',
       tag: 'Daily & Office Elegance',
       image: 'https://do9uy4stciz2v.cloudfront.net/-NXLNLGNrL_A2urc7cXg/products/-OQs6XbkZqaaqWGB_ux6.jpg',
-      link: '/shop?category=Surat+Prints',
+      link: '/shop?category=Surat+Printed',
       accentColor: 'from-[#1F2937]/90 to-transparent',
     },
   ];
@@ -90,6 +90,10 @@ const OccasionShowcase = () => {
                 alt={item.title}
                 className="absolute inset-0 w-full h-full object-cover object-top filter brightness-[0.95] group-hover:scale-110 transition-transform duration-700 ease-out"
                 loading="lazy"
+                onError={(e) => {
+                  e.currentTarget.onerror = null;
+                  e.currentTarget.src = 'https://do9uy4stciz2v.cloudfront.net/-NXLNLGNrL_A2urc7cXg/products/-OdarSY_BnF4pM-wXkgc.jpg';
+                }}
               />
 
               {/* Gradient Scrim */}

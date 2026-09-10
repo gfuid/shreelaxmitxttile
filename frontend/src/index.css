@@ -212,4 +212,196 @@ h1, h2, h3, h4, .font-serif {
   border-radius: 0.75rem;
 }
 
+/* ==========================================================================
+   Royal Silk Saree & Handloom Weave Loader Keyframes
+   ========================================================================== */
+
+/* Golden Flying Shuttle Glide */
+@keyframes shuttleGlide {
+  0% {
+    transform: translateX(-42px) translateY(0px) rotate(-4deg);
+  }
+  50% {
+    transform: translateX(42px) translateY(-3px) rotate(4deg);
+  }
+  100% {
+    transform: translateX(-42px) translateY(0px) rotate(-4deg);
+  }
+}
+
+/* Silk Pallu Wave / Saree Drape Ripple */
+@keyframes silkPalluWave {
+  0%, 100% {
+    transform: scaleY(1) skewX(0deg);
+  }
+  25% {
+    transform: scaleY(1.06) skewX(-2deg);
+  }
+  50% {
+    transform: scaleY(0.96) skewX(3deg);
+  }
+  75% {
+    transform: scaleY(1.04) skewX(-1.5deg);
+  }
+}
+
+/* Glowing Warp & Weft Threads */
+@keyframes threadWarpGlow {
+  0%, 100% {
+    opacity: 0.25;
+    stroke: #D97706;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    opacity: 0.95;
+    stroke: #FDE68A;
+    stroke-dashoffset: 10;
+  }
+}
+
+/* Golden Zari Foil Sweep */
+@keyframes goldFoilSweep {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Royal Pulse Glow */
+@keyframes royalPulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(232, 168, 124, 0.4), 0 10px 25px rgba(74, 14, 23, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(232, 168, 124, 0), 0 14px 32px rgba(74, 14, 23, 0.25);
+  }
+}
+
+.animate-shuttle {
+  animation: shuttleGlide 2.2s ease-in-out infinite;
+}
+
+.animate-silk-wave {
+  animation: silkPalluWave 3.5s ease-in-out infinite;
+  transform-origin: top center;
+}
+
+.animate-gold-foil {
+  background: linear-gradient(
+    90deg,
+    #E8A87C 0%,
+    #FFFBEB 35%,
+    #D97706 60%,
+    #E8A87C 100%
+  );
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: goldFoilSweep 3s linear infinite;
+}
+
+.royal-zari-card {
+  position: relative;
+  background: #FFFFFF;
+  border-radius: 1.5rem;
+  border: 1.5px solid #E5DDD0;
+  box-shadow: 0 12px 36px rgba(56, 11, 18, 0.07);
+}
+
+/* Royal Handloom Silk Loader Animations */
+@keyframes royalSpinClockwise {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes royalSpinCounter {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes silkThreadFlow {
+  0% {
+    stroke-dashoffset: 240;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes royalGleamSweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  60%, 100% {
+    transform: translateX(250%);
+  }
+}
+
+@keyframes royalGlowPulse {
+  0%, 100% {
+    transform: scale(0.94);
+    opacity: 0.35;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 0.75;
+  }
+}
+
+.animate-royal-spin {
+  animation: royalSpinClockwise 20s linear infinite;
+  transform-origin: center;
+}
+
+.animate-royal-spin-fast {
+  animation: royalSpinClockwise 8s linear infinite;
+  transform-origin: center;
+}
+
+.animate-royal-spin-counter {
+  animation: royalSpinCounter 14s linear infinite;
+  transform-origin: center;
+}
+
+.animate-silk-thread {
+  stroke-dasharray: 70 170;
+  animation: silkThreadFlow 2.5s linear infinite;
+}
+
+.animate-royal-gleam {
+  animation: royalGleamSweep 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.animate-royal-glow {
+  animation: royalGlowPulse 3s ease-in-out infinite;
+}
+
+.royal-zari-card::before {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border: 1px dashed rgba(232, 168, 124, 0.5);
+  border-radius: 1.25rem;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Royal Indian Selection */
+::selection {
+  background: #4A0E17;
+  color: #F5E6D3;
+}
+
+
 

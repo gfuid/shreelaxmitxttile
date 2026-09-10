@@ -26,8 +26,10 @@ import {
   Lock,
   CheckCircle2,
   UploadCloud,
-  Maximize2
+  Maximize2,
+  FileText
 } from 'lucide-react';
+import QuickOrderModal from '../components/QuickOrderModal';
 
 const ProductDetailPage = () => {
   const { id } = useParams();
@@ -42,6 +44,7 @@ const ProductDetailPage = () => {
   const [selectedImage, setSelectedImage] = useState('');
   const [quantity, setQuantity] = useState(1);
   const [addedToCart, setAddedToCart] = useState(false);
+  const [orderModalOpen, setOrderModalOpen] = useState(false);
 
   // Delivery check state
   const [pincode, setPincode] = useState('');
@@ -148,8 +151,7 @@ const ProductDetailPage = () => {
   };
 
   const handleBuyNow = () => {
-    addToCart(product, quantity);
-    navigate('/checkout');
+    setOrderModalOpen(true);
   };
 
   const handlePincodeCheck = (e) => {
@@ -252,7 +254,7 @@ const ProductDetailPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAF8F5] py-8">
+    <div className="min-h-screen bg-[#FAF8F5] pt-6 pb-24 md:pb-12">
       <div className="container">
         
         {/* Breadcrumb */}
@@ -439,9 +441,19 @@ const ProductDetailPage = () => {
                 </button>
               </div>
 
+              {/* Direct Online Order / Query Form (FlowConnect CRM) */}
+              <button
+                type="button"
+                onClick={() => setOrderModalOpen(true)}
+                className="w-full py-3 px-4 rounded-2xl bg-[#FAF7F2] hover:bg-[#FAF4EE] border border-[#E5DDD0] hover:border-[#4A0E17] text-[#4A0E17] font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-2xs group cursor-pointer"
+              >
+                <FileText size={15} className="text-[#BE185D] group-hover:scale-110 transition-transform" />
+                <span>Direct Saree Inquiry / Quick Order</span>
+              </button>
+
               {/* WhatsApp Live Video Consultation Banner */}
               <a
-                href={`https://wa.me/919440183000?text=${encodeURIComponent(`Hello Sri Vijaylaxmi, I would like to see live video / photos of ${product.title} (₹${product.price})`)}`}
+                href={`https://wa.me/919394512326?text=${encodeURIComponent(`Hello Sri Vijay Laxmi, I would like to see live video / photos of ${product.title} (₹${product.price})`)}`}
                 target="_blank"
                 rel="noreferrer"
                 className="w-full py-3.5 px-4 rounded-2xl bg-gradient-to-r from-[#F0FDF4] to-[#DCFCE7] hover:from-[#DCFCE7] hover:to-[#F0FDF4] border-2 border-emerald-500/40 hover:border-emerald-600 text-[#065F46] font-bold text-xs flex items-center justify-between transition-all shadow-sm group"
@@ -841,6 +853,82 @@ const ProductDetailPage = () => {
 
       </div>
 
+      {/* =========================================================================
+          MOBILE STICKY BOTTOM CONVERSION BAR (Price + 1-Tap Order + WhatsApp)
+          ========================================================================= */}
+      {product && (
+        <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-[#E8E2D9] px-3.5 py-2.5 shadow-[0_-8px_30px_rgba(0,0,0,0.12)] flex items-center justify-between gap-2.5 pb-[max(0.65rem,env(safe-area-inset-bottom))] animate-in slide-in-from-bottom duration-300">
+          
+          {/* Left: Thumbnail & Price */}
+          <div className="flex items-center gap-2.5 min-w-0 flex-1">
+            <div className="w-11 h-12 rounded-lg overflow-hidden border border-[#E8E2D9] shrink-0 bg-gray-100 shadow-2xs">
+              <img
+                src={selectedImage || (product.images && product.images[0])}
+                alt={product.title}
+                className="w-full h-full object-cover object-top"
+              />
+            </div>
+            <div className="min-w-0 flex-1">
+              <p className="text-[11.5px] font-bold text-gray-900 truncate leading-tight">
+                {product.title}
+              </p>
+              <div className="flex items-center gap-1.5 mt-0.5">
+                <span className="text-sm font-black text-[#700B1A]">
+                  ₹{product.price?.toLocaleString('en-IN')}
+                </span>
+                {product.originalPrice && product.originalPrice > product.price && (
+                  <span className="text-[10px] text-gray-400 line-through">
+                    ₹{product.originalPrice.toLocaleString('en-IN')}
+                  </span>
+                )}
+                <span className="text-[9px] text-emerald-700 bg-emerald-50 font-bold px-1 rounded">
+                  Free Delivery
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Right: WhatsApp + 1-Tap Order Now + Bag Button */}
+          <div className="flex items-center gap-1.5 shrink-0">
+            {/* Quick WhatsApp Inquiry */}
+            <a
+              href={`https://wa.me/919394512326?text=${encodeURIComponent(`Namaste Sri Vijay Laxmi, I am interested in ${product.title} (₹${product.price}). Please share live video/photos.`)}`}
+              target="_blank"
+              rel="noreferrer"
+              className="w-9 h-9 rounded-xl bg-[#25D366]/20 hover:bg-[#25D366] text-[#065F46] hover:text-white border border-[#25D366]/40 flex items-center justify-center transition-all shrink-0"
+              title="Chat on WhatsApp"
+            >
+              <MessageSquare size={17} />
+            </a>
+
+            {/* 1-Tap Direct Order Form (Zero Login) */}
+            <button
+              type="button"
+              onClick={() => setOrderModalOpen(true)}
+              className="px-3.5 py-2.5 rounded-xl bg-gradient-to-r from-[#4A0E17] to-[#BE185D] hover:from-[#32070D] hover:to-[#9F1239] text-white text-xs font-bold shadow-md flex items-center gap-1.5 active:scale-95 transition-all shrink-0 cursor-pointer"
+            >
+              <Sparkles size={13} className="text-amber-300 shrink-0" />
+              <span>Order Now</span>
+            </button>
+
+            {/* Quick Add to Bag */}
+            <button
+              type="button"
+              onClick={handleAddToCart}
+              className={`p-2.5 rounded-xl border text-xs font-bold transition-all shrink-0 ${
+                addedToCart
+                  ? 'bg-emerald-600 text-white border-emerald-600'
+                  : 'bg-[#FAF7F2] text-[#4A0E17] border-[#E8E2D9] hover:bg-[#4A0E17] hover:text-white'
+              }`}
+              title="Add to Bag"
+            >
+              {addedToCart ? <Check size={16} /> : <ShoppingBag size={16} />}
+            </button>
+          </div>
+
+        </div>
+      )}
+
       {/* Customer Photo Zoom Modal */}
       {zoomPhoto && (
         <div
@@ -861,6 +949,13 @@ const ProductDetailPage = () => {
           </div>
         </div>
       )}
+
+      {/* Quick Direct Order Modal (Zero Login Required) */}
+      <QuickOrderModal
+        product={product}
+        isOpen={orderModalOpen}
+        onClose={() => setOrderModalOpen(false)}
+      />
 
     </div>
   );

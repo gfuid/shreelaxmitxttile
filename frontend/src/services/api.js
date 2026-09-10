@@ -1,4 +1,5 @@
 import { initialCategories, initialBanners, initialCoupons, initialProducts, initialOrders } from './initialData';
+import { getStylistResponse } from './websiteStructure';
 
 const API_BASE_URL = 'http://localhost:5000/api';
 
@@ -32,16 +33,23 @@ const initLocalStorage = () => {
     localStorage.removeItem('svl_v4_products_db');
     localStorage.removeItem('svl_v5_products_db');
     localStorage.removeItem('svl_v6_products_db');
+    const rawWishlist = localStorage.getItem('svl_wishlist');
+    if (rawWishlist && (rawWishlist.includes('prod_1') || rawWishlist.includes('prod_3'))) {
+      const parsed = JSON.parse(rawWishlist).filter((id) => id !== 'prod_1' && id !== 'prod_3');
+      localStorage.setItem('svl_wishlist', JSON.stringify(parsed));
+    }
   } catch (e) {}
 
   const storedProds = localStorage.getItem(STORAGE_KEYS.PRODUCTS);
-  if (!storedProds || JSON.parse(storedProds).length < initialProducts.length) {
+  if (!storedProds || JSON.parse(storedProds).length < initialProducts.length || storedProds.includes('unsplash')) {
     localStorage.setItem(STORAGE_KEYS.PRODUCTS, JSON.stringify(initialProducts));
   }
-  if (!localStorage.getItem(STORAGE_KEYS.CATEGORIES)) {
+  const storedCats = localStorage.getItem(STORAGE_KEYS.CATEGORIES);
+  if (!storedCats || storedCats.includes('45u') || storedCats.includes('FUB') || storedCats.includes('unsplash') || storedCats.includes('bqq') || storedCats.includes('NyC')) {
     localStorage.setItem(STORAGE_KEYS.CATEGORIES, JSON.stringify(initialCategories));
   }
-  if (!localStorage.getItem(STORAGE_KEYS.BANNERS)) {
+  const storedBanners = localStorage.getItem(STORAGE_KEYS.BANNERS);
+  if (!storedBanners || storedBanners.includes('45u')) {
     localStorage.setItem(STORAGE_KEYS.BANNERS, JSON.stringify(initialBanners));
   }
   if (!localStorage.getItem(STORAGE_KEYS.COUPONS)) {
@@ -1024,7 +1032,8 @@ export const aiApi = {
         body: JSON.stringify({ messages }),
       });
     } catch (err) {
-      console.warn('Backend AI Chat endpoint unavailable, using client OpenAI:', err.message);
+      const lastMsg = messages[messages.length - 1]?.content || '';
+      const localResult = getStylistResponse(lastMsg);
       const keyToUse = (import.meta.env && import.meta.env.VITE_OPENAI_API_KEY) || localStorage.getItem('svl_openai_key');
 
       if (keyToUse && keyToUse.startsWith('sk-')) {
@@ -1040,7 +1049,26 @@ export const aiApi = {
               messages: [
                 {
                   role: 'system',
-                  content: `You are "Laxmi", the warm, expert AI Saree Stylist for Sri Vijaylaxmi Textiles, Hyderabad (Rikab Gunj, Est. 1980). We specialize in 100% Silk Mark certified sarees: Gadwal Pattu (₹4,850+), Pure Dharmavaram Silk (₹6,200+), Banarasi Kadwa Jaal (₹8,900+), Narayanpet Cotton (₹1,450+), and Bridal Sarees. Offer free shipping above ₹1,999, COD, and 7-day returns. Reply politely in Hindi, Hinglish, or English based on user greeting.`,
+                  content: `You are "Laxmi", the Senior Showroom Consultant and Saree Stylist at Sri Vijaylaxmi Textiles, Hyderabad (Rikab Gunj, High Court Road, Est. 1980).
+CRITICAL RULES:
+1. NEVER mention that you are an AI, bot, virtual assistant, OpenAI, or GPT model. Speak with warmth, dignity, and deep handloom knowledge like an authentic Hyderabad boutique stylist.
+2. Reply politely in Hindi, Hinglish, or English depending on how the customer addresses you.
+3. CONVENIENT DIRECT NAVIGATION: Whenever a customer asks about a saree type, order, tracking, address, or policy, ALWAYS provide direct markdown links so the customer can click and go directly to that page:
+   - Dharmavaram Bridal Pattu: [Explore Dharmavaram Sarees](/shop?category=Dharmavaram+Pattu) (₹1,500 - ₹18,000)
+   - Designer Gadwal Silk: [View Gadwal Pattu](/shop?category=Designer+Pattu+Gadwal) (₹4,850+)
+   - Banaras Wedding Creams & Brocades: [View Banarasi Sarees](/shop?category=Banaras+Wed+Cream) (₹1,110+)
+   - Wedding Ghagaras & Lehengas: [View Wedding Ghagaras](/shop?category=Wedding+Ghagara)
+   - Kids & Baby Ghagaras: [View Baby Ghagaras](/shop?category=Baby+Ghagara)
+   - Handloom Cotton Narayanpet: [View Narayanpet Cotton](/shop?category=COTTON+NARAYANPET)
+   - Single Colour Wholesale Discount: [View Flat 40% Offer](/shop?category=Single+Colour+Offer)
+   - All Saree Catalogues: [Browse All Sarees](/shop)
+   - Direct Showroom Order Form: [Direct Order Form](/order-query)
+   - Live Order Tracking: [Track Your Order](/track-order)
+   - Store Address & Map: [Showroom Location & Contact](/contact)
+   - Saree Maintenance Guide: [Silk Care Guide](/silk-care)
+   - Returns & Shipping Policy: [Shipping & Returns](/returns)
+   - Cart / Checkout: [View Cart](/cart)
+4. Showroom Details: Door No: 21-1-764, Rikab Gunj, High Court Road, Hyderabad, Telangana 500002. Open 7 days (10:30 AM to 9:00 PM). Phone/WhatsApp: +91 93945 12326. Free shipping above ₹1,999, COD nationwide, 100% Silk Mark certified.`,
                 },
                 ...messages,
               ],
@@ -1053,29 +1081,21 @@ export const aiApi = {
             return {
               success: true,
               message: data.choices[0].message.content,
-              provider: 'OpenAI GPT-4o-mini',
+              actionLinks: localResult.actionLinks,
+              provider: 'Sri Vijaylaxmi Stylist Desk',
             };
           }
-        } catch (e) {}
+        } catch (e) {
+          console.warn('OpenAI call failed, using built-in showroom engine:', e);
+        }
       }
 
-      // Built-in intelligent assistant fallback
-      const lastMsg = messages[messages.length - 1]?.content?.toLowerCase() || '';
-      let reply = 'Namaste! 🙏 Welcome to Sri Vijaylaxmi Textiles. How may I help you find your dream saree today?';
-      if (lastMsg.includes('wedding') || lastMsg.includes('bridal') || lastMsg.includes('shadi')) {
-        reply = 'Namaste! 🙏 For weddings, our **Pure Dharmavaram Silk** (₹6,200 - ₹22,000) and **Banarasi Kadwa Jaal Silk** (₹8,900+) are the most beloved bridal choices with heavy gold zari borders.';
-      } else if (lastMsg.includes('gadwal') || lastMsg.includes('pattu')) {
-        reply = '✨ Our **Designer Gadwal Silk Sarees** (₹4,850) are famous for lightweight body and grand contrast zari pallu with authentic Kuttu weave.';
-      } else if (lastMsg.includes('delivery') || lastMsg.includes('shipping') || lastMsg.includes('cod')) {
-        reply = '📦 We provide **Free Insured Shipping** all over India on orders above ₹1,999. Express delivery takes 3-5 days. Cash on Delivery (COD) is available!';
-      } else if (lastMsg.includes('store') || lastMsg.includes('address') || lastMsg.includes('location')) {
-        reply = '📍 Visit our heritage store at: **Sri Vijaylaxmi Textiles**, Door No: 21-1-764, Rikab Gunj, High Court Road, Hyderabad, Telangana 500002. Open all 7 days (10:30 AM - 9:00 PM).';
-      }
-
+      // Built-in intelligent showroom assistant with full website structure
       return {
         success: true,
-        message: reply,
-        provider: 'Sri Vijaylaxmi AI Engine',
+        message: localResult.text,
+        actionLinks: localResult.actionLinks,
+        provider: 'Sri Vijaylaxmi Stylist Desk',
       };
     }
   },

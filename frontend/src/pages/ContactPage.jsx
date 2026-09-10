@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Clock, MessageSquare, Send, CheckCircle2, Sparkles, Store, Loader2 } from 'lucide-react';
 import { leadAPI } from '../services/api';
+import SareeLoader from '../components/common/SareeLoader';
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -10,6 +11,8 @@ const ContactPage = () => {
     topic: 'Bridal & Trousseau Curation',
     message: '',
   });
+  const [activeTab, setActiveTab] = useState('flowconnect');
+  const [iframeLoaded, setIframeLoaded] = useState(false);
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
@@ -123,16 +126,87 @@ const ContactPage = () => {
 
             </div>
 
-            {/* Right Column: Inquiry Form */}
-            <div className="lg:col-span-7 bg-white p-6 sm:p-10 rounded-3xl border border-[#E5DDD0] shadow-md">
-              <div className="mb-6 pb-4 border-b border-gray-100">
-                <h3 className="font-serif text-2xl font-bold text-[#380B12]">
-                  Send an Inquiry or Consultation Request
-                </h3>
-                <p className="text-xs text-gray-500 mt-1">
-                  Our silk curators usually reply within 2 to 4 business hours.
-                </p>
+            {/* Right Column: FlowConnect & Direct Inquiry Forms */}
+            <div className="lg:col-span-7 bg-white p-6 sm:p-8 rounded-3xl border border-[#E5DDD0] shadow-md">
+              
+              {/* Tab Switcher */}
+              <div className="flex items-center gap-2 p-1.5 bg-[#FAF7F2] rounded-2xl border border-[#E5DDD0] mb-6">
+                <button
+                  type="button"
+                  onClick={() => setActiveTab('flowconnect')}
+                  className={`flex-1 py-2.5 px-3 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 ${
+                    activeTab === 'flowconnect'
+                      ? 'bg-[#4A0E17] text-white shadow-sm'
+                      : 'text-[#736B63] hover:text-[#4A0E17]'
+                  }`}
+                >
+                  <Sparkles size={13} className={activeTab === 'flowconnect' ? 'text-amber-300' : ''} />
+                  <span>Order & Saree Query Form</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setActiveTab('direct')}
+                  className={`flex-1 py-2.5 px-3 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 ${
+                    activeTab === 'direct'
+                      ? 'bg-[#4A0E17] text-white shadow-sm'
+                      : 'text-[#736B63] hover:text-[#4A0E17]'
+                  }`}
+                >
+                  <MessageSquare size={13} />
+                  <span>General Message</span>
+                </button>
               </div>
+
+              {activeTab === 'flowconnect' ? (
+                <div>
+                  <div className="mb-4 pb-3 border-b border-gray-100 flex items-center justify-between">
+                    <div>
+                      <h3 className="font-serif text-xl font-bold text-[#380B12]">
+                        Instant Order & Saree Query
+                      </h3>
+                      <p className="text-xs text-gray-500 mt-0.5">
+                        Directly synced with our Hyderabad showroom desk.
+                      </p>
+                    </div>
+                    <span className="text-[10px] font-bold bg-[#FAF4EE] text-[#BE185D] border border-[#E5DDD0] px-2.5 py-1 rounded-full">
+                      ⚡ Instant Sync
+                    </span>
+                  </div>
+
+                  {!iframeLoaded && (
+                    <div className="my-4">
+                      <SareeLoader
+                        size="card"
+                        message="Weaving Live Saree Query Desk..."
+                        subtext="Connecting with Hyderabad Master Handloom Registry..."
+                      />
+                    </div>
+                  )}
+
+                  <div className={iframeLoaded ? 'block' : 'hidden'}>
+                    <iframe
+                      src="https://app.flowconnect.ai/form/sri-vijay-laxmi-sarees-textiles-order-query--mtud52ox"
+                      width="100%"
+                      height="600"
+                      frameBorder="0"
+                      style={{ border: 'none', minHeight: '600px', width: '100%' }}
+                      title="Sri Vijay Laxmi Sarees & Textiles Order Query Form"
+                      className="w-full rounded-2xl"
+                      onLoad={() => setIframeLoaded(true)}
+                    ></iframe>
+                  </div>
+                </div>
+              ) : (
+                <div>
+                  <div className="mb-6 pb-4 border-b border-gray-100">
+                    <h3 className="font-serif text-2xl font-bold text-[#380B12]">
+                      Send an Inquiry or Consultation Request
+                    </h3>
+                    <p className="text-xs text-gray-500 mt-1">
+                      Our silk curators usually reply within 2 to 4 business hours.
+                    </p>
+                  </div>
 
               {submitted ? (
                 <div className="py-12 text-center space-y-3 bg-emerald-50 rounded-2xl p-6 border border-emerald-200">
@@ -246,6 +320,8 @@ const ContactPage = () => {
                     </button>
                   </div>
                 </form>
+              )}
+                </div>
               )}
 
             </div>

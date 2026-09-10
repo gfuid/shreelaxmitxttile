@@ -11,6 +11,7 @@ import ArtisanCraftJourney from '../components/ArtisanCraftJourney';
 import CustomerReviewsSection from '../components/CustomerReviewsSection';
 import SareeKnowledgeHub from '../components/SareeKnowledgeHub';
 import VideoShoppingBanner from '../components/VideoShoppingBanner';
+import HomeOrderQuerySection from '../components/HomeOrderQuerySection';
 import HeritageSection from '../components/HeritageSection';
 import QuickViewModal from '../components/QuickViewModal';
 
@@ -75,7 +76,10 @@ const HomePage = () => {
       {/* 11. Virtual Video Shopping Consultation Banner */}
       <VideoShoppingBanner />
 
-      {/* 12. Editorial About Us & VIP Club Newsletter matching image.png */}
+      {/* 12. Direct Manufacturer Order & Custom Saree Query Form (FlowConnect CRM Embed) */}
+      <HomeOrderQuerySection />
+
+      {/* 13. Editorial About Us & VIP Club Newsletter matching image.png */}
       <HeritageSection />
 
       {/* Quick View Modal */}

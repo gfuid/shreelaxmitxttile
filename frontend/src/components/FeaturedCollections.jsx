@@ -60,7 +60,7 @@ const FeaturedCollections = ({ products, onQuickView, loading }) => {
               return (
                 <div
                   key={product._id}
-                  className="group flex flex-col justify-between items-center text-center bg-white p-3 rounded-2xl border border-[#E5DDD0] shadow-sm hover:shadow-md hover:border-[#4A0E17]/30 transition-all duration-300"
+                  className="group flex flex-col justify-between items-center text-center bg-white p-3.5 rounded-2xl border border-[#EDE5D8] hover:border-[#D4AF37]/50 shadow-[0_4px_18px_rgba(0,0,0,0.03)] hover:shadow-[0_18px_36px_rgba(74,14,23,0.11)] hover:-translate-y-1 transition-all duration-500"
                 >
                 {/* Image Frame with Arch Curve */}
                 <div className="w-full relative aspect-[3/4.2] rounded-xl overflow-hidden bg-[#FAF8F5] mb-3">
@@ -68,7 +68,7 @@ const FeaturedCollections = ({ products, onQuickView, loading }) => {
                     <img
                       src={product.images?.[0]}
                       alt={product.title}
-                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover object-top group-hover:scale-108 transition-transform duration-700 ease-out filter brightness-[0.98] group-hover:brightness-100"
                       loading="lazy"
                     />
                   </Link>

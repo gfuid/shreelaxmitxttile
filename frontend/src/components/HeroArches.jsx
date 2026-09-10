@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Sparkles, ArrowRight } from 'lucide-react';
+import { Sparkles, ArrowRight, ShieldCheck, Phone, CheckCircle2 } from 'lucide-react';
 
 const HeroArches = () => {
   const arches = [
@@ -18,7 +18,7 @@ const HeroArches = () => {
       title: 'Opulent Banaras Cream Brocade',
       subtitle: 'Auspicious Heritage Katan Silk',
       price: '₹1,110',
-      image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=85',
+      image: 'https://cdn.quicksell.co/-NXLNLGNrL_A2urc7cXg/products_400/-OM6NfPNKJ2Pk83g0g4I.jpg',
       category: 'Banaras Wed Cream',
       link: '/shop?category=Banaras+Wed+Cream',
     },
@@ -36,19 +36,79 @@ const HeroArches = () => {
       title: 'Surat Pouch & Printed Sarees',
       subtitle: 'Featherlight Soft Silk & Kasturi Prints',
       price: '₹425',
-      image: 'https://cdn.quicksell.co/-NXLNLGNrL_A2urc7cXg/products_400/-Ox5SbJ78Va4rRaIz45u.jpg',
+      image: 'https://cdn.quicksell.co/-NXLNLGNrL_A2urc7cXg/products_400/-Ox5SbJ78Va4rRaIz45t.jpg',
       category: 'Surat Pouch',
       link: '/shop?category=Surat+Pouch',
     },
   ];
 
   return (
-    <section className="bg-[#380B12] py-8 sm:py-12 px-3 sm:px-6 relative overflow-hidden border-b border-[#2C050B]">
+    <section className="bg-gradient-to-b from-[#380B12] via-[#2F070E] to-[#250409] py-10 sm:py-16 px-3 sm:px-6 relative overflow-hidden border-b border-[#2C050B]">
       
-      {/* Background Subtle Floral/Texture Pattern Overlay */}
-      <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#E8A87C_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none"></div>
+      {/* Background Subtle Royal Golden Starlight & Radial Aura */}
+      <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#E8A87C_1px,transparent_1px)] [background-size:22px_22px] pointer-events-none"></div>
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-80 bg-gradient-to-b from-[#E8A87C]/15 to-transparent blur-3xl pointer-events-none"></div>
 
       <div className="container max-w-6xl relative z-10">
+        
+        {/* Majestic Brand Hero Header */}
+        <div className="text-center max-w-4xl mx-auto mb-10 sm:mb-14">
+          
+          {/* Top Heritage Badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#520C17]/90 border border-[#E8A87C]/40 text-[#E8A87C] text-[10.5px] sm:text-[11.5px] font-bold tracking-widest uppercase mb-5 shadow-lg">
+            <ShieldCheck size={14} className="text-[#E8A87C]" />
+            <span>Direct Wholesale Manufacturer Since 1980 • Rikab Gunj, Hyderabad</span>
+          </div>
+
+          {/* Regal Headline */}
+          <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-[#F5E6D3] tracking-tight leading-[1.12] mb-5">
+            Master Handloom Silks <br className="hidden sm:inline" />
+            <span className="italic font-normal text-transparent bg-clip-text bg-gradient-to-r from-[#E8A87C] via-[#FDE68A] to-[#E8A87C]">
+              Woven for Royalty & Bridal Grandeur
+            </span>
+          </h1>
+
+          {/* Subheading */}
+          <p className="text-amber-100/85 text-xs sm:text-sm md:text-base max-w-2xl mx-auto mb-8 font-light leading-relaxed">
+            100% Silk Mark Certified pure Dharmavaram Pattu, Gadwal Silk, Banarasi Brocades, and Festive Ghagaras at authentic weaver wholesale rates.
+          </p>
+
+          {/* High-Converting Action CTAs */}
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+            <Link
+              to="/shop"
+              className="px-6 sm:px-7 py-3.5 rounded-full bg-gradient-to-r from-[#E8A87C] to-[#D49363] hover:from-[#f0b991] hover:to-[#dfa071] text-[#380B12] font-black text-xs sm:text-sm shadow-xl hover:scale-105 transition-all flex items-center gap-2"
+            >
+              <span>Explore Saree Catalogues</span>
+              <ArrowRight size={16} />
+            </Link>
+
+            <a
+              href="https://wa.me/919394512326?text=Namaste%20Sri%20Vijay%20Laxmi%2C%20I%20would%20like%20to%20see%20live%20saree%20video%20call%20consultation"
+              target="_blank"
+              rel="noreferrer"
+              className="px-5 py-3.5 rounded-full bg-[#25D366]/20 hover:bg-[#25D366]/30 text-emerald-300 border border-emerald-500/40 font-bold text-xs sm:text-sm transition-all flex items-center gap-2"
+            >
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <Phone size={14} />
+              <span>WhatsApp Video Call</span>
+            </a>
+          </div>
+
+          {/* Quick Trust Pillars Row */}
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-8 mt-6 pt-5 border-t border-[#520C17]/60 text-[11px] sm:text-xs text-amber-200/80 font-medium">
+            <span className="flex items-center gap-1.5">
+              <CheckCircle2 size={13} className="text-[#E8A87C]" /> 100% Pure Silk Mark Certified
+            </span>
+            <span className="flex items-center gap-1.5">
+              <CheckCircle2 size={13} className="text-[#E8A87C]" /> Free Insured Shipping Across India
+            </span>
+            <span className="flex items-center gap-1.5">
+              <CheckCircle2 size={13} className="text-[#E8A87C]" /> Ready Fall & Pico Complimentary
+            </span>
+          </div>
+
+        </div>
         
         {/* 4 Mughal Scalloped Arch Windows Grid */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5 md:gap-6">
@@ -68,6 +128,10 @@ const HeroArches = () => {
                     alt={arch.title}
                     className="w-full h-full object-cover object-top filter brightness-[0.95] group-hover:brightness-105 group-hover:scale-105 transition-all duration-700"
                     loading="eager"
+                    onError={(e) => {
+                      e.currentTarget.onerror = null;
+                      e.currentTarget.src = 'https://do9uy4stciz2v.cloudfront.net/-NXLNLGNrL_A2urc7cXg/products/-OdarSY_BnF4pM-wXkgc.jpg';
+                    }}
                   />
 
                   {/* Gradient Overlay at Bottom */}

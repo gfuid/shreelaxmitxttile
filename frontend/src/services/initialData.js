@@ -14,7 +14,7 @@ export const initialCategories = [
     "name": "Banaras Wed Cream",
     "slug": "banaras-wed-cream",
     "description": "Opulent Banarasi wedding cream and gold silk sarees handwoven for brides and auspicious ceremonies.",
-    "image": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80",
+    "image": "https://cdn.quicksell.co/-NXLNLGNrL_A2urc7cXg/products_400/-OM6NfPNKJ2Pk83g0g4I.jpg",
     "itemCount": 11,
     "displayOrder": 2,
     "isActive": true
@@ -54,7 +54,7 @@ export const initialCategories = [
     "name": "Surat Pouch",
     "slug": "surat-pouch",
     "description": "Comfortable everyday and gifting soft silk sarees in luxury pouch packing with traditional motifs.",
-    "image": "https://cdn.quicksell.co/-NXLNLGNrL_A2urc7cXg/products_400/-Ox5SbJ78Va4rRaIz45u.jpg",
+    "image": "https://cdn.quicksell.co/-NXLNLGNrL_A2urc7cXg/products_400/-Ox5SbJ78Va4rRaIz45t.jpg",
     "itemCount": 24,
     "displayOrder": 6,
     "isActive": true
@@ -64,7 +64,7 @@ export const initialCategories = [
     "name": "Surat Printed",
     "slug": "surat-printed",
     "description": "Lightweight digital printed floral georgette, chiffon, and Kasturi crepe sarees for daily elegance.",
-    "image": "https://cdn.quicksell.co/-NXLNLGNrL_A2urc7cXg/products_400/-OUEaRa2W-YKrUNH1FUB.jpg",
+    "image": "https://cdn.quicksell.co/-NXLNLGNrL_A2urc7cXg/products_400/-OUEaRa2W-YKrUNH1FUA.jpg",
     "itemCount": 11,
     "displayOrder": 7,
     "isActive": true
@@ -74,7 +74,7 @@ export const initialCategories = [
     "name": "Surat Pattu",
     "slug": "surat-pattu",
     "description": "Rich lustrous Surat Pattu silk sarees with golden zari weaving and festive dual-tone borders.",
-    "image": "https://cdn.quicksell.co/-NXLNLGNrL_A2urc7cXg/products_400/-OZDgVsJRcjIBxHcybqq.jpg",
+    "image": "https://cdn.quicksell.co/-NXLNLGNrL_A2urc7cXg/products_400/-OZDgVsJRcjIBxHcybqp.jpg",
     "itemCount": 11,
     "displayOrder": 8,
     "isActive": true
@@ -84,7 +84,7 @@ export const initialCategories = [
     "name": "Single Colour Offer",
     "slug": "single-colour-offer",
     "description": "Exclusive manufacturer wholesale single color specials on pure Dharmavaram silk sarees.",
-    "image": "https://cdn.quicksell.co/-NXLNLGNrL_A2urc7cXg/products_400/-OdsOBarhJkNk_LvqNyC.jpg",
+    "image": "https://cdn.quicksell.co/-NXLNLGNrL_A2urc7cXg/products_400/-OdsOBarhJkNk_LvqNyB.jpg",
     "itemCount": 11,
     "displayOrder": 9,
     "isActive": true
@@ -144,7 +144,7 @@ export const initialBanners = [
     "subtitle": "Authentic Handloom Buta, Checks & Featherlight Partywear",
     "badgeText": "DAILY ELEGANCE",
     "discountText": "STARTING AT ₹260",
-    "image": "https://cdn.quicksell.co/-NXLNLGNrL_A2urc7cXg/products_400/-Ox5SbJ78Va4rRaIz45u.jpg",
+    "image": "https://cdn.quicksell.co/-NXLNLGNrL_A2urc7cXg/products_400/-Ox5SbJ78Va4rRaIz45t.jpg",
     "link": "/shop?category=Surat+Pouch",
     "category": "Surat Pouch",
     "bgGradient": "linear-gradient(135deg, #022C22 0%, #064E3B 100%)",
@@ -4229,7 +4229,7 @@ export const initialProducts = [
     "originalPrice": 6548,
     "discountPercent": 26,
     "images": [
-      "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80"
+      "https://do9uy4stciz2v.cloudfront.net/-NXLNLGNrL_A2urc7cXg/products/-OxVQ3YVjPjgkTg5w3lx.jpg"
     ],
     "description": "Exquisite Gadwal Pattu Silk Saree - Peacock Blue & Gold crafted with heritage handloom artistry by Sri Vijay Laxmi Textiles. Perfect for bridal & wedding, featuring premium Pure Gadwal Silk with shimmering finish, soft drape, and traditional zari borders.",
     "stock": 25,
@@ -4262,7 +4262,7 @@ export const initialProducts = [
     "originalPrice": 6548,
     "discountPercent": 26,
     "images": [
-      "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=600&q=80"
+      "https://do9uy4stciz2v.cloudfront.net/-NXLNLGNrL_A2urc7cXg/products/-OPu9UyO-V5FlFxqh-xA.jpg"
     ],
     "description": "Exquisite Gadwal Pattu Silk Saree - Emerald Green & Maroon crafted with heritage handloom artistry by Sri Vijay Laxmi Textiles. Perfect for bridal & wedding, featuring premium Pure Gadwal Silk with shimmering finish, soft drape, and traditional zari borders.",
     "stock": 25,
@@ -4295,7 +4295,7 @@ export const initialProducts = [
     "originalPrice": 6548,
     "discountPercent": 26,
     "images": [
-      "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=600&q=80"
+      "https://do9uy4stciz2v.cloudfront.net/-NXLNLGNrL_A2urc7cXg/products/-OfaasJRnw-y8oD1OD-V.jpg"
     ],
     "description": "Exquisite Gadwal Pattu Silk Saree - Royal Magenta & Purple crafted with heritage handloom artistry by Sri Vijay Laxmi Textiles. Perfect for bridal & wedding, featuring premium Pure Gadwal Silk with shimmering finish, soft drape, and traditional zari borders.",
     "stock": 25,
@@ -4559,7 +4559,7 @@ export const initialProducts = [
     "originalPrice": 1202,
     "discountPercent": 26,
     "images": [
-      "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80"
+      "https://do9uy4stciz2v.cloudfront.net/-NXLNLGNrL_A2urc7cXg/products/-Odax93M6rmDkTLwpId_.jpg"
     ],
     "description": "Exquisite Narayanpet Handloom Cotton Saree - Forest Green & Red crafted with heritage handloom artistry by Sri Vijay Laxmi Textiles. Perfect for festive & puja, featuring premium Pure Handloom Cotton with shimmering finish, soft drape, and traditional zari borders.",
     "stock": 25,
@@ -4592,7 +4592,7 @@ export const initialProducts = [
     "originalPrice": 1202,
     "discountPercent": 26,
     "images": [
-      "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=600&q=80"
+      "https://do9uy4stciz2v.cloudfront.net/-NXLNLGNrL_A2urc7cXg/products/-OZ8ZfNqFsPIa2dd7F1_.jpg"
     ],
     "description": "Exquisite Narayanpet Handloom Cotton Saree - Navy Blue & Orange crafted with heritage handloom artistry by Sri Vijay Laxmi Textiles. Perfect for festive & puja, featuring premium Pure Handloom Cotton with shimmering finish, soft drape, and traditional zari borders.",
     "stock": 25,
@@ -4625,7 +4625,7 @@ export const initialProducts = [
     "originalPrice": 1202,
     "discountPercent": 26,
     "images": [
-      "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=600&q=80"
+      "https://do9uy4stciz2v.cloudfront.net/-NXLNLGNrL_A2urc7cXg/products/-OdarSY_BnF4pM-wXkgc.jpg"
     ],
     "description": "Exquisite Narayanpet Handloom Cotton Saree - Rani Pink & Parrot Green crafted with heritage handloom artistry by Sri Vijay Laxmi Textiles. Perfect for festive & puja, featuring premium Pure Handloom Cotton with shimmering finish, soft drape, and traditional zari borders.",
     "stock": 25,

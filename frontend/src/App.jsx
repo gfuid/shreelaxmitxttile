@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';
 import { WishlistProvider } from './context/WishlistContext';
@@ -10,6 +10,7 @@ import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import AiChatbot from './components/AiChatbot';
 import WhatsAppButton from './components/WhatsAppButton';
+import SareeLoader from './components/common/SareeLoader';
 
 // Storefront Pages
 import HomePage from './pages/HomePage';
@@ -17,6 +18,7 @@ import ShopPage from './pages/ShopPage';
 import CollectionsPage from './pages/CollectionsPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
+import OrderQueryPage from './pages/OrderQueryPage';
 import ProductDetailPage from './pages/ProductDetailPage';
 import CartPage from './pages/CartPage';
 import CheckoutPage from './pages/CheckoutPage';
@@ -33,13 +35,52 @@ import ForgotPasswordPage from './pages/ForgotPasswordPage';
 import ResetPasswordPage from './pages/ResetPasswordPage';
 import AccountPage from './pages/AccountPage';
 
+// Royal Route Navigation Bar (displays golden zari silk shimmer on page changes)
+const RouteLoadingBar = () => {
+  const location = useLocation();
+  const [navigating, setNavigating] = useState(false);
+
+  useEffect(() => {
+    setNavigating(true);
+    const timer = setTimeout(() => {
+      setNavigating(false);
+    }, 450);
+    return () => clearTimeout(timer);
+  }, [location.pathname, location.search]);
+
+  if (!navigating) return null;
+
+  return (
+    <div className="fixed top-0 left-0 right-0 z-50 pointer-events-none h-1 bg-transparent overflow-hidden">
+      <div className="h-full w-full bg-gradient-to-r from-[#BE185D] via-[#D97706] to-[#E8A87C] animate-royal-gleam shadow-md"></div>
+    </div>
+  );
+};
+
 function App() {
+  const [initialLoading, setInitialLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setInitialLoading(false);
+    }, 950);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <AuthProvider>
       <CartProvider>
         <WishlistProvider>
+          {initialLoading && (
+            <SareeLoader
+              size="fullscreen"
+              message="Sri Vijay Laxmi Sarees & Textiles"
+              subtext="Pure Handloom Silk Mark Certified • Rikab Gunj, Hyderabad"
+            />
+          )}
           <Router>
             <ScrollToTop />
+            <RouteLoadingBar />
             <div className="flex flex-col min-h-screen">
               <Navbar />
               <div className="flex-1">
@@ -50,6 +91,7 @@ function App() {
                   <Route path="/collections" element={<CollectionsPage />} />
                   <Route path="/about" element={<AboutPage />} />
                   <Route path="/contact" element={<ContactPage />} />
+                  <Route path="/order-query" element={<OrderQueryPage />} />
                   <Route path="/silk-care" element={<SilkCarePage />} />
                   <Route path="/returns" element={<ReturnsPolicyPage />} />
                   <Route path="/terms" element={<TermsPrivacyPage />} />

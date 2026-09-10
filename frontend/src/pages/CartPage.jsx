@@ -343,18 +343,18 @@ const CartPage = () => {
               {/* Checkout Button */}
               <button
                 onClick={() => navigate('/checkout')}
-                className="w-full btn btn-primary text-sm font-bold py-3.5 rounded-xl shadow-lg mt-3 flex items-center justify-center gap-2"
+                className="w-full btn btn-primary text-sm font-bold py-3.5 rounded-xl shadow-lg mt-3 flex items-center justify-center gap-2 cursor-pointer hover:scale-[1.02] transition-all"
               >
-                <span>Proceed to Secure Checkout</span>
+                <span>Proceed to Checkout</span>
                 <ArrowRight size={16} />
               </button>
 
-              <div className="pt-2 flex items-center justify-center gap-4 text-[10px] text-gray-400">
+              <div className="pt-2 flex items-center justify-center gap-4 text-[10px] text-gray-500">
                 <span className="flex items-center gap-1">
-                  <ShieldCheck size={13} className="text-[#D97706]" /> 100% Safe Payments
+                  <ShieldCheck size={13} className="text-[#D97706]" /> Direct Showroom Booking
                 </span>
                 <span className="flex items-center gap-1">
-                  <Truck size={13} className="text-[#D97706]" /> Cash on Delivery Available
+                  <Truck size={13} className="text-[#D97706]" /> Free Insured Delivery
                 </span>
               </div>
 

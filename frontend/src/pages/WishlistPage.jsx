@@ -7,7 +7,7 @@ import QuickViewModal from '../components/QuickViewModal';
 import { Heart, ShoppingBag, ArrowRight } from 'lucide-react';
 
 const WishlistPage = () => {
-  const { wishlist, wishlistCount } = useWishlist();
+  const { wishlist, wishlistCount, setWishlist } = useWishlist();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [quickViewProduct, setQuickViewProduct] = useState(null);
@@ -19,6 +19,12 @@ const WishlistPage = () => {
         if (res.data) {
           const filtered = res.data.filter((p) => wishlist.includes(p._id));
           setProducts(filtered);
+
+          // If wishlist contained deleted or invalid IDs, reconcile count
+          const validIds = filtered.map((p) => p._id);
+          if (validIds.length !== wishlist.length && setWishlist) {
+            setWishlist(validIds);
+          }
         }
       } catch (e) {
         console.error(e);
@@ -28,6 +34,8 @@ const WishlistPage = () => {
     };
     fetchWishlistProducts();
   }, [wishlist]);
+
+  const displayCount = loading ? wishlistCount : products.length;
 
   return (
     <div className="min-h-screen bg-[#FAF8F5] py-8">
@@ -39,7 +47,9 @@ const WishlistPage = () => {
             <h1 className="font-serif text-2xl sm:text-3xl font-bold text-gray-900">
               My Saved Sarees & Wishlist
             </h1>
-            <p className="text-xs text-gray-500 mt-0.5">{wishlistCount} sarees in your wishlist</p>
+            <p className="text-xs text-gray-500 mt-0.5">
+              {displayCount === 0 ? 'No sarees saved yet' : `${displayCount} ${displayCount === 1 ? 'saree' : 'sarees'} in your wishlist`}
+            </p>
           </div>
 
           <Link to="/shop" className="text-xs font-bold text-[#700B1A] hover:underline flex items-center gap-1">
@@ -63,12 +73,16 @@ const WishlistPage = () => {
             <p className="text-xs text-gray-500 mb-6">
               Save your favorite wedding silks and party wear sarees by clicking the heart icon on any product.
             </p>
-            <Link to="/shop" className="btn btn-primary text-xs font-bold px-6 py-2.5 rounded-full">
-              Discover Handcrafted Sarees
+            <Link
+              to="/shop"
+              className="inline-flex items-center gap-2 bg-[#700B1A] hover:bg-[#520813] text-white px-6 py-2.5 rounded-full text-xs font-bold shadow-md transition-all"
+            >
+              <ShoppingBag size={14} />
+              <span>Discover Handcrafted Sarees</span>
             </Link>
           </div>
         ) : (
-          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
             {products.map((product) => (
               <ProductCard
                 key={product._id}
@@ -79,15 +93,15 @@ const WishlistPage = () => {
           </div>
         )}
 
-        {/* Quick View Modal */}
-        {quickViewProduct && (
-          <QuickViewModal
-            product={quickViewProduct}
-            onClose={() => setQuickViewProduct(null)}
-          />
-        )}
-
       </div>
+
+      {/* Quick View Modal */}
+      {quickViewProduct && (
+        <QuickViewModal
+          product={quickViewProduct}
+          onClose={() => setQuickViewProduct(null)}
+        />
+      )}
     </div>
   );
 };
