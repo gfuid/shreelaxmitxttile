@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Sparkles, Award, ShieldCheck, Heart, Users, MapPin, CheckCircle2, ArrowRight } from 'lucide-react';
+import founderImg from '../assets/mohan_kumar_founder.png';
 
 const AboutPage = () => {
   return (
@@ -12,13 +13,13 @@ const AboutPage = () => {
         <div className="container max-w-3xl relative z-10 space-y-3">
           <div className="inline-flex items-center gap-1.5 bg-[#E8A87C]/20 border border-[#E8A87C]/40 text-[#E8A87C] px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-widest">
             <Sparkles size={13} className="text-amber-300" />
-            <span>Legacy of Pure Varanasi Silk</span>
+            <span>Sri Vijay Laxmi Textiles • Since August 1994</span>
           </div>
           <h1 className="font-royal text-3xl sm:text-5xl font-black tracking-wider text-white">
             OUR HERITAGE STORY
           </h1>
           <p className="text-xs sm:text-sm text-gray-300 max-w-xl mx-auto leading-relaxed">
-            Preserving five generations of master handloom choreography, Kadwa gold zari weaves, and Silk Mark certified craftsmanship.
+            28+ Years of wholesale handloom excellence, supplying premier shopping malls, bridal showrooms, and household resellers across India.
           </p>
         </div>
       </section>
@@ -28,18 +29,22 @@ const AboutPage = () => {
         <div className="container max-w-5xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
             
-            {/* Left: Imagery with Mughal Arched Border */}
+            {/* Left: Founder Portrait with Mughal Arched Border */}
             <div className="relative">
-              <div className="aspect-[3/4] rounded-t-[140px] rounded-b-3xl overflow-hidden border-4 border-white shadow-2xl bg-[#FAF8F5]">
+              <div className="aspect-[3/4] rounded-t-[140px] rounded-b-3xl overflow-hidden border-4 border-white shadow-2xl bg-[#FAF8F5] relative">
                 <img
-                  src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=85"
-                  alt="Sri Vijaylaxmi Loom Heritage"
+                  src={founderImg}
+                  alt="Mohan Kumar - Founder of Sri Vijay Laxmi Textiles (India) Private Limited"
                   className="w-full h-full object-cover object-top"
                 />
+                <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/85 via-black/50 to-transparent p-4 text-center">
+                  <p className="text-white text-lg font-bold font-serif">Mohan Kumar</p>
+                  <p className="text-xs text-amber-300 font-semibold uppercase tracking-wider">Founder • August 1994</p>
+                </div>
               </div>
-              <div className="absolute -bottom-5 -right-5 bg-white p-4 rounded-2xl shadow-xl border border-[#E5DDD0] text-center max-w-[160px]">
-                <span className="font-royal text-2xl font-black text-[#700B1A] block">EST. 1974</span>
-                <span className="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Varanasi, UP</span>
+              <div className="absolute -bottom-5 -right-5 bg-white p-4 rounded-2xl shadow-xl border border-[#E5DDD0] text-center max-w-[170px]">
+                <span className="font-royal text-2xl font-black text-[#700B1A] block">EST. 1994</span>
+                <span className="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Rikabgunj, Hyderabad</span>
               </div>
             </div>
 
@@ -47,34 +52,41 @@ const AboutPage = () => {
             <div className="space-y-5">
               <div>
                 <span className="text-xs font-bold uppercase tracking-widest text-[#D97706] block">
-                  The Genesis of Sri Vijaylaxmi
+                  Mohan Kumar • Founder of Sri Vijay Laxmi Textiles
                 </span>
                 <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#380B12] mt-1">
-                  Woven with Devotion & Pure Metallic Zari
+                  SRI VIJAY LAXMI TEXTILES (INDIA) PRIVATE LIMITED
                 </h2>
               </div>
 
               <p className="text-xs sm:text-sm text-[#736B63] leading-relaxed">
-                Founded along the holy riverbanks of Kashi (Varanasi), <strong>Sri Vijaylaxmi Sarees</strong> began as a family guild of master weavers dedicated to reviving ancient Kadwa and Jamdani handloom techniques.
+                <strong>SRI VIJAY LAXMI TEXTILES (INDIA) PRIVATE LIMITED</strong> has been running for <strong>28+ years since August 1994</strong>. Founded by <strong>Mohan Kumar</strong> in Rikabgunj, Hyderabad, we deal exclusively in <strong>total wholesale and set-to-set wholesale</strong>.
               </p>
 
               <p className="text-xs sm:text-sm text-[#736B63] leading-relaxed">
-                Over five decades, we have remained steadfast in our refusal to compromise on fiber purity. Every single warp and weft is woven with 100% natural Mulberry silk filaments and silver-electroplated zari threads that never tarnish.
+                We supply big shopping malls, big bridal showrooms, and household women resellers who sell in house across India with direct manufacturer wholesale pricing.
               </p>
+
+              <div className="bg-[#FAF5ED] p-4 rounded-2xl border border-[#E8A87C]/50 text-xs text-[#520C17] space-y-1.5 shadow-2xs">
+                <span className="font-bold text-sm block text-[#700B1A]">📦 About Our Wholesale Ordering & Packing Policy:</span>
+                <p className="text-[11.5px] leading-relaxed text-[#736B63]">
+                  <strong>Please order minimum ₹15,000/-.</strong> Packing charges free. Shipping charge applicable under ₹15,000/- purchase. Packing bundles and freight charges applicable. Please check our verified reviews in Google!
+                </p>
+              </div>
 
               {/* Core Guarantees List */}
               <div className="space-y-2.5 pt-2 text-xs text-[#380B12]">
                 <div className="flex items-center gap-2.5">
                   <CheckCircle2 size={16} className="text-emerald-600 shrink-0" />
-                  <span><strong>100% Silk Mark Certified:</strong> Government verified pure silk authenticity.</span>
+                  <span><strong>Direct Manufacturer Rates:</strong> Zero middlemen, lowest loom-to-showroom pricing.</span>
                 </div>
                 <div className="flex items-center gap-2.5">
                   <CheckCircle2 size={16} className="text-emerald-600 shrink-0" />
-                  <span><strong>Fair-Wage Artisan Guild:</strong> Supporting 500+ traditional weaver families.</span>
+                  <span><strong>Total Set-to-Set Wholesale:</strong> Verified stock for malls, boutiques & resellers.</span>
                 </div>
                 <div className="flex items-center gap-2.5">
                   <CheckCircle2 size={16} className="text-emerald-600 shrink-0" />
-                  <span><strong>Zero Middlemen:</strong> Direct loom pricing passed on to our patrons.</span>
+                  <span><strong>30+ Years Trust:</strong> Serving pan-India clients continuously since August 1994.</span>
                 </div>
               </div>
             </div>

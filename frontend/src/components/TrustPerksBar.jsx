@@ -1,37 +1,37 @@
 import React from 'react';
-import { Award, Truck, Scissors, RotateCcw, Video } from 'lucide-react';
+import { Truck, PhoneCall, CreditCard, Send, Building2 } from 'lucide-react';
 
 const TrustPerksBar = () => {
   const perks = [
     {
       id: 1,
-      icon: Award,
-      title: '100% Pure Silk Mark',
-      subtitle: 'Government Hologram Certified',
+      icon: Truck,
+      title: 'Free Shipping & Packing',
+      subtitle: 'Free packing on orders ₹15,000+',
     },
     {
       id: 2,
-      icon: Truck,
-      title: 'Free Express Shipping',
-      subtitle: 'Pan-India in 2-4 Days & Global',
+      icon: PhoneCall,
+      title: '24/7 Wholesale Support',
+      subtitle: 'Call / WhatsApp: +91 9394512326',
     },
     {
       id: 3,
-      icon: Scissors,
-      title: 'Complimentary Fall & Pico',
-      subtitle: 'Ready to Drape on Delivery',
+      icon: CreditCard,
+      title: 'Online Payment',
+      subtitle: 'Secure UPI, NEFT / RTGS Transfer',
     },
     {
       id: 4,
-      icon: RotateCcw,
-      title: 'Hassle-Free 7-Day Returns',
-      subtitle: 'Doorstep Pickup & Easy Exchange',
+      icon: Send,
+      title: 'Fast Delivery',
+      subtitle: 'Pan-India Transport & Parcel Freight',
     },
     {
       id: 5,
-      icon: Video,
-      title: 'Live Video Shopping',
-      subtitle: '1-on-1 Stylist Consultation',
+      icon: Building2,
+      title: 'Set to Set Wholesale',
+      subtitle: 'For Malls, Showrooms & Home Resellers',
     },
   ];
 

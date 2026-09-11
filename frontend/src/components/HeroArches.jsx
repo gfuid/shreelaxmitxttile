@@ -54,10 +54,10 @@ const HeroArches = () => {
         {/* Majestic Brand Hero Header */}
         <div className="text-center max-w-4xl mx-auto mb-10 sm:mb-14">
           
-          {/* Top Heritage Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#520C17]/90 border border-[#E8A87C]/40 text-[#E8A87C] text-[10.5px] sm:text-[11.5px] font-bold tracking-widest uppercase mb-5 shadow-lg">
-            <ShieldCheck size={14} className="text-[#E8A87C]" />
-            <span>Direct Wholesale Manufacturer Since 1980 • Rikab Gunj, Hyderabad</span>
+          {/* Top Heritage Badge with Floating Animation */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#520C17]/90 border border-[#E8A87C]/40 text-[#E8A87C] text-[10.5px] sm:text-[11.5px] font-bold tracking-widest uppercase mb-5 shadow-lg animate-float">
+            <ShieldCheck size={14} className="text-[#E8A87C] animate-pulse" />
+            <span>Direct Wholesale Manufacturer Since August 1994 • Rikab Gunj, Hyderabad</span>
           </div>
 
           {/* Regal Headline */}
@@ -70,7 +70,7 @@ const HeroArches = () => {
 
           {/* Subheading */}
           <p className="text-amber-100/85 text-xs sm:text-sm md:text-base max-w-2xl mx-auto mb-8 font-light leading-relaxed">
-            100% Silk Mark Certified pure Dharmavaram Pattu, Gadwal Silk, Banarasi Brocades, and Festive Ghagaras at authentic weaver wholesale rates.
+            100% Silk Mark Certified pure Dharmavarm Pattu, Gadwal Silk, Banarasi Brocades, and Festive Ghagaras at authentic weaver wholesale rates.
           </p>
 
           {/* High-Converting Action CTAs */}
@@ -84,10 +84,10 @@ const HeroArches = () => {
             </Link>
 
             <a
-              href="https://wa.me/919394512326?text=Namaste%20Sri%20Vijay%20Laxmi%2C%20I%20would%20like%20to%20see%20live%20saree%20video%20call%20consultation"
+              href="https://wa.me/919394512326?text=Namaste%20Sri%20Vijay%20Laxmi%2C%20I%20would%20like%20to%20place%20a%20wholesale%20order"
               target="_blank"
               rel="noreferrer"
-              className="px-5 py-3.5 rounded-full bg-[#25D366]/20 hover:bg-[#25D366]/30 text-emerald-300 border border-emerald-500/40 font-bold text-xs sm:text-sm transition-all flex items-center gap-2"
+              className="px-5 py-3.5 rounded-full bg-[#25D366]/20 hover:bg-[#25D366]/30 text-emerald-300 border border-emerald-500/40 font-bold text-xs sm:text-sm transition-all flex items-center gap-2 hover:scale-105"
             >
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
               <Phone size={14} />
@@ -101,10 +101,10 @@ const HeroArches = () => {
               <CheckCircle2 size={13} className="text-[#E8A87C]" /> 100% Pure Silk Mark Certified
             </span>
             <span className="flex items-center gap-1.5">
-              <CheckCircle2 size={13} className="text-[#E8A87C]" /> Free Insured Shipping Across India
+              <CheckCircle2 size={13} className="text-[#E8A87C]" /> Min. Order ₹15,000/- Free Packing
             </span>
             <span className="flex items-center gap-1.5">
-              <CheckCircle2 size={13} className="text-[#E8A87C]" /> Ready Fall & Pico Complimentary
+              <CheckCircle2 size={13} className="text-[#E8A87C]" /> Supplying Malls, Boutiques & Resellers
             </span>
           </div>
 
@@ -116,10 +116,10 @@ const HeroArches = () => {
             <Link
               key={arch.id}
               to={arch.link}
-              className="group relative flex flex-col items-center cursor-pointer transition-transform duration-500 hover:-translate-y-2"
+              className="group relative flex flex-col items-center cursor-pointer transition-transform duration-500 hover:-translate-y-2.5 shine-effect"
             >
               {/* Outer Mughal Arch Shape Container */}
-              <div className="w-full aspect-[2/3.5] scalloped-arch rounded-t-[100px] sm:rounded-t-[130px] border-2 border-[#E8A87C]/30 group-hover:border-[#E8A87C] transition-colors p-1 bg-[#2C050B]/80 shadow-2xl overflow-hidden">
+              <div className="w-full aspect-[2/3.5] scalloped-arch rounded-t-[100px] sm:rounded-t-[130px] border-2 border-[#E8A87C]/30 group-hover:border-amber-400 group-hover:shadow-[0_12px_35px_rgba(232,168,124,0.35)] transition-all duration-500 p-1 bg-[#2C050B]/80 shadow-2xl overflow-hidden">
                 <div className="w-full h-full rounded-t-[96px] sm:rounded-t-[126px] overflow-hidden relative">
                   
                   {/* Saree Model Photography */}

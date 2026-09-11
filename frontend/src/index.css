@@ -403,5 +403,118 @@ h1, h2, h3, h4, .font-serif {
   color: #F5E6D3;
 }
 
+/* ==========================================================================
+   Interactive Animation System: Marquee, Shimmer, Float & Ripple
+   ========================================================================== */
 
+@keyframes marqueeTrack {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
 
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marqueeTrack 28s linear infinite;
+  will-change: transform;
+}
+
+@keyframes gentleFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-float {
+  animation: gentleFloat 4s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes goldenShineSweep {
+  0% {
+    transform: translateX(-150%) skewX(-20deg);
+  }
+  100% {
+    transform: translateX(250%) skewX(-20deg);
+  }
+}
+
+.shine-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine-effect::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.28) 50%,
+    transparent 100%
+  );
+  transform: translateX(-150%) skewX(-20deg);
+  pointer-events: none;
+  z-index: 15;
+}
+
+.shine-effect:hover::after {
+  animation: goldenShineSweep 0.9s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes pulseGoldRing {
+  0% {
+    box-shadow: 0 0 0 0 rgba(217, 119, 6, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 12px rgba(217, 119, 6, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(217, 119, 6, 0);
+  }
+}
+
+.pulse-gold {
+  animation: pulseGoldRing 2.2s infinite;
+}
+
+@keyframes pingRadial {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+}
+
+.ping-radial {
+  animation: pingRadial 2.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes fadeScaleUp {
+  0% {
+    opacity: 0;
+    transform: scale(0.96) translateY(14px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-card-in {
+  animation: fadeScaleUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}

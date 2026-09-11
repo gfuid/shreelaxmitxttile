@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Heart, Mail, Phone, MapPin, ShieldCheck, Award } from 'lucide-react';
 import logoImg from '../assets/logo.png';
+import founderImg from '../assets/mohan_kumar_founder.png';
 
 const Footer = () => {
   return (
@@ -38,15 +39,21 @@ const Footer = () => {
           {/* Column 2: Saree Catalogues */}
           <div>
             <h4 className="font-serif text-sm font-bold text-white uppercase tracking-wider mb-3 text-[#E8A87C]">
-              OFFICIAL CATALOGUES
+              OUR CATEGORIES
             </h4>
-            <ul className="space-y-2 text-xs">
-              <li><Link to="/shop?category=Designer+Pattu+Gadwal" className="hover:text-[#E8A87C]">Designer Pattu Gadwal</Link></li>
-              <li><Link to="/shop?category=Dharmavaram+Pattu" className="hover:text-[#E8A87C]">Dharmavaram Pattu</Link></li>
-              <li><Link to="/shop?category=Banaras+Wed+Cream" className="hover:text-[#E8A87C]">Banaras Wed Cream</Link></li>
-              <li><Link to="/shop?category=COTTON+NARAYANPET" className="hover:text-[#E8A87C]">Cotton Narayanpet</Link></li>
-              <li><Link to="/shop?category=Wedding+Ghagara" className="hover:text-[#E8A87C]">Wedding Ghagara</Link></li>
-              <li><Link to="/shop?category=Mau+Rich+pallu" className="hover:text-[#E8A87C]">Mau Rich Pallu</Link></li>
+            <ul className="space-y-1.5 text-xs">
+              <li><Link to="/shop?category=Ghagara+Full+Size" className="hover:text-[#E8A87C]">Ghagara Full Size</Link></li>
+              <li><Link to="/shop?category=Ghagara+Baby+Size" className="hover:text-[#E8A87C]">Ghagara Baby Size</Link></li>
+              <li><Link to="/shop?category=Dharmavarm+Pattu" className="hover:text-[#E8A87C]">Dharmavarm Pattu</Link></li>
+              <li><Link to="/shop?category=Dharmavarm+Kuttu+Pattu" className="hover:text-[#E8A87C]">Dharmavarm Kuttu Pattu</Link></li>
+              <li><Link to="/shop?category=Mau+Pattu+Buta" className="hover:text-[#E8A87C]">Mau Pattu Buta</Link></li>
+              <li><Link to="/shop?category=Mau+Rich+Pallu" className="hover:text-[#E8A87C]">Mau Rich Pallu</Link></li>
+              <li><Link to="/shop?category=Surat+Print+Sarees" className="hover:text-[#E8A87C]">Surat Print Sarees</Link></li>
+              <li><Link to="/shop?category=Surat+Catalogue" className="hover:text-[#E8A87C]">Surat Catalogue</Link></li>
+              <li><Link to="/shop?category=Banaras+Fancy+Sarees" className="hover:text-[#E8A87C]">Banaras Fancy Sarees</Link></li>
+              <li><Link to="/shop?category=Wedding+Cream+Sarees" className="hover:text-[#E8A87C]">Wedding Cream Sarees</Link></li>
+              <li><Link to="/shop?category=Cotton+Chek%2FButa" className="hover:text-[#E8A87C]">Cotton Chek/Buta</Link></li>
+              <li><Link to="/shop?category=Narayanpet+Sarees" className="hover:text-[#E8A87C]">Narayanpet Sarees</Link></li>
             </ul>
           </div>
 
@@ -58,11 +65,9 @@ const Footer = () => {
             <ul className="space-y-2 text-xs">
               <li><Link to="/order-query" className="hover:text-[#E8A87C] text-amber-200/90 font-medium flex items-center gap-1"><span>Order & Saree Query</span> <span className="text-[9px] bg-[#5C161D] text-[#E8A87C] px-1.5 py-0.5 rounded-full">New</span></Link></li>
               <li><Link to="/track-order" className="hover:text-[#E8A87C]">Track Order Live</Link></li>
-              <li><Link to="/returns" className="hover:text-[#E8A87C]">7-Day Return Policy</Link></li>
-              <li><Link to="/silk-care" className="hover:text-[#E8A87C]">Silk Care & Burn Test</Link></li>
               <li><Link to="/about" className="hover:text-[#E8A87C]">Our Heritage Story</Link></li>
               <li><Link to="/contact" className="hover:text-[#E8A87C]">Contact Us</Link></li>
-              <li><Link to="/shop?category=SINGAL+COLOUR+OFFER" className="hover:text-[#E8A87C]">Single Colour Offers</Link></li>
+              <li><a href="https://wa.me/919394512326" target="_blank" rel="noreferrer" className="hover:text-[#E8A87C] text-emerald-400 font-semibold">Direct WhatsApp (+91 9394512326)</a></li>
             </ul>
           </div>
 
@@ -74,7 +79,7 @@ const Footer = () => {
             <div className="space-y-2 text-xs text-gray-400">
               <p className="flex items-start gap-2">
                 <MapPin size={14} className="text-[#E8A87C] shrink-0 mt-0.5" />
-                <span>21-1-667/5/B, God Gift Market, First floor, Rikab Gunj, Hyderabad - 500002, Telangana, India</span>
+                <span>#21-1-667/B/5, FIRST FLOOR, GOD GIFT MARKET RIKABGUNJ HYDERABAD 500002</span>
               </p>
               <p className="flex items-center gap-2">
                 <Phone size={14} className="text-[#E8A87C] shrink-0" />
@@ -93,11 +98,18 @@ const Footer = () => {
               CERTIFIED QUALITY
             </h4>
             <p className="text-xs text-gray-400 mb-3 leading-relaxed">
-              Wholesale manufacturer direct pricing with genuine Silk Mark quality assurances and fast pan-India delivery.
+              Total wholesale and set-to-set wholesale supplier since August 1994. Please order minimum ₹15,000/- for free packing.
             </p>
-            <div className="p-3 bg-[#4A0E17] rounded-xl border border-[#5C161D] text-center">
-              <span className="text-[11px] font-bold text-white block">100% Genuine Handlooms</span>
-              <span className="text-[10px] text-[#E8A87C]">Mohan Kumar Agrawal (Director)</span>
+            <div className="p-3 bg-[#4A0E17] rounded-xl border border-[#5C161D] flex items-center gap-3">
+              <img
+                src={founderImg}
+                alt="Mohan Kumar - Founder"
+                className="w-10 h-10 rounded-full object-cover border border-[#E8A87C]/50 shrink-0"
+              />
+              <div className="min-w-0">
+                <span className="text-xs font-bold text-white block truncate">Mohan Kumar</span>
+                <span className="text-[10px] text-[#E8A87C] block truncate">Founder (Since Aug 1994)</span>
+              </div>
             </div>
           </div>
 
@@ -106,7 +118,7 @@ const Footer = () => {
         {/* Bottom Copyright */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-400">
           <div>
-            © {new Date().getFullYear()} SRI VIJAY LAXMI TEXTILES (INDIA) P LTD. All Rights Reserved. Hyderabad, Telangana 🇮🇳.
+            © {new Date().getFullYear()} SRI VIJAY LAXMI TEXTILES (INDIA) PRIVATE LIMITED. All Rights Reserved. Rikabgunj, Hyderabad 🇮🇳.
           </div>
           <div className="flex items-center gap-4 text-[11px]">
             <Link to="/terms" className="hover:text-white">Terms of Service</Link>

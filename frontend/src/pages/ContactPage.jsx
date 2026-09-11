@@ -82,7 +82,7 @@ const ContactPage = () => {
                 <div className="space-y-3 text-xs text-gray-600">
                   <div className="flex items-start gap-3">
                     <MapPin size={16} className="text-[#700B1A] shrink-0 mt-0.5" />
-                    <span>21-1-667/5/B, God Gift Market, First floor, Rikab Gunj, Hyderabad - 500002, Telangana, India</span>
+                    <span>#21-1-667/B/5, FIRST FLOOR, GOD GIFT MARKET RIKABGUNJ HYDERABAD 500002</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <Phone size={16} className="text-[#700B1A] shrink-0" />

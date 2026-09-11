@@ -12,15 +12,14 @@ const getAuthHeaders = () => {
   };
 };
 
-// Local storage key names for fallback offline persistence
-// Local storage key names for fallback offline persistence (v7 rich catalog state)
+// Local storage key names for fallback offline persistence (v10 exact srivijaylaxmi categories & wholesale)
 const STORAGE_KEYS = {
-  PRODUCTS: 'svl_v7_products_db',
-  CATEGORIES: 'svl_v7_categories_db',
-  BANNERS: 'svl_v7_banners_db',
-  COUPONS: 'svl_v7_coupons_db',
-  ORDERS: 'svl_v7_orders_db',
-  USERS: 'svl_v7_users_db',
+  PRODUCTS: 'svl_v10_products_db',
+  CATEGORIES: 'svl_v10_categories_db',
+  BANNERS: 'svl_v10_banners_db',
+  COUPONS: 'svl_v10_coupons_db',
+  ORDERS: 'svl_v10_orders_db',
+  USERS: 'svl_v10_users_db',
 };
 
 // Initialize LocalStorage with seed data if empty
@@ -33,6 +32,12 @@ const initLocalStorage = () => {
     localStorage.removeItem('svl_v4_products_db');
     localStorage.removeItem('svl_v5_products_db');
     localStorage.removeItem('svl_v6_products_db');
+    localStorage.removeItem('svl_v7_products_db');
+    localStorage.removeItem('svl_v7_categories_db');
+    localStorage.removeItem('svl_v8_products_db');
+    localStorage.removeItem('svl_v8_categories_db');
+    localStorage.removeItem('svl_v9_products_db');
+    localStorage.removeItem('svl_v9_categories_db');
     const rawWishlist = localStorage.getItem('svl_wishlist');
     if (rawWishlist && (rawWishlist.includes('prod_1') || rawWishlist.includes('prod_3'))) {
       const parsed = JSON.parse(rawWishlist).filter((id) => id !== 'prod_1' && id !== 'prod_3');
@@ -45,7 +50,7 @@ const initLocalStorage = () => {
     localStorage.setItem(STORAGE_KEYS.PRODUCTS, JSON.stringify(initialProducts));
   }
   const storedCats = localStorage.getItem(STORAGE_KEYS.CATEGORIES);
-  if (!storedCats || storedCats.includes('45u') || storedCats.includes('FUB') || storedCats.includes('unsplash') || storedCats.includes('bqq') || storedCats.includes('NyC')) {
+  if (!storedCats || JSON.parse(storedCats).length < initialCategories.length || storedCats.includes('45u') || storedCats.includes('FUB')) {
     localStorage.setItem(STORAGE_KEYS.CATEGORIES, JSON.stringify(initialCategories));
   }
   const storedBanners = localStorage.getItem(STORAGE_KEYS.BANNERS);
@@ -460,10 +465,21 @@ export const productsApi = {
         );
       }
 
-      // Filter by Category
+      // Filter by Category with smart phonetic & variation normalization
       if (params.category && params.category !== 'all') {
-        const cats = params.category.split(',').map((c) => decodeURIComponent(c).trim().toLowerCase());
-        products = products.filter((p) => cats.includes((p.category || '').trim().toLowerCase()));
+        const normalizeCat = (s) =>
+          (s || '')
+            .toLowerCase()
+            .replace(/dharmavarm/g, 'dharmavaram')
+            .replace(/butta/g, 'buta')
+            .replace(/sarees/g, 'saree')
+            .replace(/[^a-z0-9]/g, '');
+
+        const cats = params.category.split(',').map((c) => normalizeCat(decodeURIComponent(c)));
+        products = products.filter((p) => {
+          const pCat = normalizeCat(p.category || '');
+          return cats.some((c) => pCat === c || pCat.includes(c) || c.includes(pCat));
+        });
       }
 
       // Filter by Fabric

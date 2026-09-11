@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { categoriesApi } from '../services/api';
+import { initialCategories } from '../services/initialData';
 import { ArrowRight, Sparkles } from 'lucide-react';
 
 const CategoryGrid = () => {
@@ -11,9 +12,13 @@ const CategoryGrid = () => {
     const loadCategories = async () => {
       try {
         const res = await categoriesApi.getAll();
-        if (res.data) setCategories(res.data);
+        if (res.data && res.data.length > 0) {
+          setCategories(res.data);
+        } else {
+          setCategories(initialCategories);
+        }
       } catch (e) {
-        console.error(e);
+        setCategories(initialCategories);
       } finally {
         setLoading(false);
       }

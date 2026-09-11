@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Star, Award, ShieldCheck, HeartHandshake, CheckCircle2, Sparkles, Loader2 } from 'lucide-react';
 import { leadAPI } from '../services/api';
+import founderImg from '../assets/mohan_kumar_founder.png';
 
 const HeritageSection = () => {
   const [formData, setFormData] = useState({ name: '', contact: '' });
@@ -37,55 +38,65 @@ const HeritageSection = () => {
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
-          {/* 1. Left Column: ABOUT US Image with Arch Frame matching image.png */}
+          {/* 1. Left Column: ABOUT US Founder Portrait */}
           <div className="lg:col-span-3 flex flex-col items-center sm:items-start">
             <h3 className="font-serif text-lg font-bold tracking-[0.1em] text-[#380B12] uppercase mb-3">
               ABOUT US
             </h3>
             
-            <div className="w-full max-w-[260px] aspect-[3/4] rounded-2xl overflow-hidden shadow-lg border-2 border-[#E5DDD0] bg-[#FAF8F5]">
+            <div className="w-full max-w-[260px] aspect-[3/4] rounded-2xl overflow-hidden shadow-xl border-4 border-white bg-[#FAF8F5] relative group">
               <img
-                src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80"
-                alt="Sri Vijaylaxmi Heritage"
-                className="w-full h-full object-cover"
+                src={founderImg}
+                alt="Mohan Kumar - Founder of Sri Vijay Laxmi Textiles (India) Private Limited"
+                className="w-full h-full object-cover object-top"
               />
+              <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/85 via-black/50 to-transparent p-3 text-center">
+                <p className="text-white text-xs font-bold font-serif">Mohan Kumar</p>
+                <p className="text-[10px] text-amber-300 font-semibold uppercase tracking-wider">Founder (Since Aug 1994)</p>
+              </div>
             </div>
           </div>
 
-          {/* 2. Middle Column: COLLECTION HIGHLIGHTS Story & Badges matching image.png */}
+          {/* 2. Middle Column: Founder Story & Wholesale Assurances */}
           <div className="lg:col-span-5 space-y-4">
             <div className="border-b border-[#E5DDD0] pb-2">
-              <h3 className="font-serif text-xl sm:text-2xl font-bold tracking-[0.08em] text-[#380B12] uppercase">
-                HERITAGE WEAVE HIGHLIGHTS
+              <span className="text-[11px] font-bold text-[#D97706] uppercase tracking-wider block">
+                Mohan Kumar • Founder of Sri Vijay Laxmi Textiles
+              </span>
+              <h3 className="font-serif text-xl sm:text-2xl font-bold tracking-[0.05em] text-[#380B12] uppercase">
+                SRI VIJAY LAXMI TEXTILES (INDIA) PRIVATE LIMITED
               </h3>
             </div>
 
             <p className="text-xs sm:text-sm text-[#736B63] leading-relaxed">
-              Rooted in the ancient weaving lanes of Varanasi and Kanchipuram, <strong>Sri Vijaylaxmi Sarees</strong> celebrates pure handspun silk, Kadwa zari jaals, and temple Korvai motifs passed down through five generations of master artisans.
+              <strong>SRI VIJAY LAXMI TEXTILES (INDIA) PRIVATE LIMITED</strong> has been running for <strong>28+ years since August 1994</strong>. We deal exclusively in <strong>total wholesale and set-to-set wholesale</strong> supplying to big shopping malls, premier bridal showrooms, and household women resellers across India.
             </p>
 
-            <p className="text-xs text-[#736B63] leading-relaxed hidden sm:block">
-              Each saree takes between 20 to 40 days of intricate handloom choreography, blending pure metallic threads with mulberry and katan silks for unmatched drape, luster, and longevity.
-            </p>
+            <div className="bg-[#FAF5ED] p-4 rounded-2xl border border-[#E8A87C]/50 text-xs text-[#520C17] space-y-1.5 shadow-2xs">
+              <span className="font-bold text-sm block text-[#700B1A]">📦 About Our Wholesale Store & Ordering Policy:</span>
+              <p className="text-[11.5px] leading-relaxed text-[#736B63]">
+                <strong>Please order minimum ₹15,000/-.</strong> Packing charges free. Shipping charge applicable under ₹15,000/- purchase. Packing bundles and freight charges applicable. Please check our authentic reviews and rating in Google!
+              </p>
+            </div>
 
-            {/* 3 Star Highlights matching image.png */}
-            <div className="grid grid-cols-3 gap-2 pt-2 text-center text-xs">
-              <div className="p-3 bg-white rounded-xl border border-[#E5DDD0] shadow-xs">
-                <Star size={18} className="text-[#D97706] fill-[#D97706] mx-auto mb-1" />
-                <strong className="text-[11px] text-[#380B12] font-bold block">100% Pure Silk</strong>
-                <span className="text-[9px] text-gray-400">Silk Mark Certified</span>
+            {/* 3 Value Highlights */}
+            <div className="grid grid-cols-3 gap-2 pt-1 text-center text-xs">
+              <div className="p-2.5 bg-white rounded-xl border border-[#E5DDD0] shadow-xs">
+                <ShieldCheck size={18} className="text-[#D97706] mx-auto mb-1" />
+                <strong className="text-[11px] text-[#380B12] font-bold block">Since 1994</strong>
+                <span className="text-[9px] text-gray-400">28+ Yrs Running</span>
               </div>
 
-              <div className="p-3 bg-white rounded-xl border border-[#E5DDD0] shadow-xs">
-                <Star size={18} className="text-[#D97706] fill-[#D97706] mx-auto mb-1" />
-                <strong className="text-[11px] text-[#380B12] font-bold block">Master Weavers</strong>
-                <span className="text-[9px] text-gray-400">Authentic Looms</span>
+              <div className="p-2.5 bg-white rounded-xl border border-[#E5DDD0] shadow-xs">
+                <Award size={18} className="text-[#D97706] mx-auto mb-1" />
+                <strong className="text-[11px] text-[#380B12] font-bold block">Set-to-Set</strong>
+                <span className="text-[9px] text-gray-400">Pure Wholesale</span>
               </div>
 
-              <div className="p-3 bg-white rounded-xl border border-[#E5DDD0] shadow-xs">
-                <Star size={18} className="text-[#D97706] fill-[#D97706] mx-auto mb-1" />
-                <strong className="text-[11px] text-[#380B12] font-bold block">Direct Pricing</strong>
-                <span className="text-[9px] text-gray-400">Zero Middlemen</span>
+              <div className="p-2.5 bg-white rounded-xl border border-[#E5DDD0] shadow-xs">
+                <Sparkles size={18} className="text-[#D97706] mx-auto mb-1" />
+                <strong className="text-[11px] text-[#380B12] font-bold block">Direct Rates</strong>
+                <span className="text-[9px] text-gray-400">Rikab Gunj, Hyd</span>
               </div>
             </div>
           </div>

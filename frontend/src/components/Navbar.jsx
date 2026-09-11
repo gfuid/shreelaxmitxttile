@@ -56,9 +56,9 @@ const Navbar = () => {
 
   // Rotating announcements for the luxury top bar
   const topAnnouncements = [
-    { text: 'Free Insured Express Shipping Across India on All Orders', highlight: '⚡' },
-    { text: 'Direct Master Weaver Wholesale Rates Since 1980 • Rikab Gunj, Hyd', highlight: '🏛️' },
-    { text: '100% Pure Silk Mark Certified Handloom & Bridal Sarees', highlight: '✨' }
+    { text: 'FREE PACKING ON ORDERS ABOVE ₹15,000/- • WHOLESALE SET-TO-SET ONLY', highlight: '📦' },
+    { text: 'SRI VIJAY LAXMI TEXTILES (INDIA) P LTD • RUNNING 28+ YEARS SINCE AUGUST 1994', highlight: '🏛️' },
+    { text: 'SUPPLYING BIG MALLS, SHOWROOMS & LADIES RESELLERS • RIKABGUNJ, HYDERABAD', highlight: '✨' }
   ];
   const [announcementIdx, setAnnouncementIdx] = useState(0);
 
@@ -288,10 +288,10 @@ const Navbar = () => {
             </span>
             <span className="hidden 2xl:inline text-amber-200/50">•</span>
             <span className="hidden 2xl:inline text-amber-100/80 font-medium whitespace-nowrap">
-              Wholesale & Retail Since 1980
+              Wholesale Since August 1994
             </span>
             <span className="hidden sm:inline-flex items-center bg-[#5C161D] text-[#E8A87C] px-2 py-0.5 text-[9px] font-bold rounded-full border border-[#E8A87C]/30 whitespace-nowrap">
-              SILK MARK CERTIFIED
+              MIN ORDER ₹15,000/-
             </span>
           </div>
 
@@ -577,86 +577,18 @@ const Navbar = () => {
               )}
             </Link>
 
-            {/* User Account Button & Dropdown */}
-            <div className="relative">
-              {isAuthenticated ? (
-                <button
-                  onClick={() => setAccountDropdownOpen(!accountDropdownOpen)}
-                  className="flex items-center gap-1.5 pl-2 pr-3 py-1.5 rounded-full bg-[#FAF7F2] border border-[#E5DDD0] hover:border-[#4A0E17] text-xs font-bold text-[#4A0E17] transition-all shadow-xs"
-                >
-                  <div className="w-6 h-6 rounded-full bg-gradient-to-br from-[#4A0E17] to-[#D97706] text-white flex items-center justify-center text-[11px] font-black">
-                    {user?.name ? user.name[0].toUpperCase() : 'U'}
-                  </div>
-                  <span className="max-w-[80px] truncate hidden sm:inline">{user?.name?.split(' ')[0]}</span>
-                  <ChevronDown size={13} className="text-[#736B63]" />
-                </button>
-              ) : (
-                <Link
-                  to="/order-query"
-                  className="flex items-center gap-1.5 px-3.5 py-1.5 bg-gradient-to-r from-[#4A0E17] to-[#BE185D] hover:from-[#32070D] hover:to-[#9F1239] text-white text-xs font-bold rounded-full transition-all shadow-xs hover:shadow-md"
-                  title="Direct Order & Inquiry"
-                >
-                  <Sparkles size={13} className="text-amber-300" />
-                  <span>Order Now</span>
-                </Link>
-              )}
-
-              {/* Account Dropdown Menu */}
-              {isAuthenticated && accountDropdownOpen && (
-                <div 
-                  className="absolute right-0 mt-2 w-60 bg-white rounded-2xl shadow-2xl border border-[#E5DDD0] py-2 z-50 animate-in fade-in zoom-in-95 duration-100"
-                  onMouseLeave={() => setAccountDropdownOpen(false)}
-                >
-                  <div className="px-4 py-3 border-b border-[#EDE5D8] bg-[#FAF7F2]">
-                    <span className="text-[9px] text-[#736B63] uppercase tracking-widest font-black">Namaste 🙏</span>
-                    <p className="text-xs font-bold text-gray-900 truncate mt-0.5">{user.name}</p>
-                    <p className="text-[11px] text-gray-500 truncate">{user.email}</p>
-                  </div>
-
-                  <div className="py-1">
-                    <Link
-                      to="/orders"
-                      onClick={() => setAccountDropdownOpen(false)}
-                      className="flex items-center gap-2.5 px-4 py-2.5 text-xs text-gray-700 hover:bg-[#FAF7F2] hover:text-[#4A0E17] transition-colors"
-                    >
-                      <Package size={15} className="text-[#D97706]" />
-                      <span className="font-semibold">My Orders & Tracking</span>
-                    </Link>
-
-                    <Link
-                      to="/wishlist"
-                      onClick={() => setAccountDropdownOpen(false)}
-                      className="flex items-center gap-2.5 px-4 py-2.5 text-xs text-gray-700 hover:bg-[#FAF7F2] hover:text-[#4A0E17] transition-colors"
-                    >
-                      <Heart size={15} className="text-[#BE185D]" />
-                      <span className="font-semibold">My Wishlist Sarees</span>
-                    </Link>
-
-                    <Link
-                      to="/account"
-                      onClick={() => setAccountDropdownOpen(false)}
-                      className="flex items-center gap-2.5 px-4 py-2.5 text-xs text-gray-700 hover:bg-[#FAF7F2] hover:text-[#4A0E17] transition-colors"
-                    >
-                      <Settings size={15} className="text-gray-500" />
-                      <span className="font-semibold">Saved Addresses & Account</span>
-                    </Link>
-                  </div>
-
-                  <div className="border-t border-[#EDE5D8] my-1"></div>
-
-                  <button
-                    onClick={() => {
-                      logout();
-                      setAccountDropdownOpen(false);
-                    }}
-                    className="w-full flex items-center gap-2.5 px-4 py-2.5 text-xs text-red-600 hover:bg-red-50 transition-colors font-bold text-left"
-                  >
-                    <LogOut size={15} />
-                    <span>Sign Out</span>
-                  </button>
-                </div>
-              )}
-            </div>
+            {/* Wholesale Order / WhatsApp CTA */}
+            <a
+              href="https://wa.me/919394512326?text=Hi%20Sri%20Vijay%20Laxmi%20Textiles%2C%20I%20want%20to%20place%20a%20wholesale%20order."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 px-3.5 py-1.5 bg-[#25D366] hover:bg-[#20bd5a] text-white text-xs font-bold rounded-full transition-all shadow-xs hover:shadow-md"
+              title="Order via WhatsApp"
+            >
+              <Phone size={13} />
+              <span className="hidden sm:inline">WhatsApp Order</span>
+              <span className="sm:hidden">Order</span>
+            </a>
 
           </div>
 

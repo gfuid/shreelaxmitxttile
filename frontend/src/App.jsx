@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';
 import { WishlistProvider } from './context/WishlistContext';
@@ -10,6 +10,7 @@ import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import AiChatbot from './components/AiChatbot';
 import WhatsAppButton from './components/WhatsAppButton';
+import MobileBottomNav from './components/MobileBottomNav';
 import SareeLoader from './components/common/SareeLoader';
 
 // Storefront Pages
@@ -81,7 +82,7 @@ function App() {
           <Router>
             <ScrollToTop />
             <RouteLoadingBar />
-            <div className="flex flex-col min-h-screen">
+            <div className="flex flex-col min-h-screen pb-16 md:pb-0">
               <Navbar />
               <div className="flex-1">
                 <Routes>
@@ -104,11 +105,12 @@ function App() {
                   <Route path="/order-success/:id" element={<OrderSuccessPage />} />
                   <Route path="/orders" element={<MyOrdersPage />} />
                   <Route path="/wishlist" element={<WishlistPage />} />
-                  <Route path="/account" element={<AccountPage />} />
-                  <Route path="/login" element={<LoginPage />} />
-                  <Route path="/register" element={<RegisterPage />} />
-                  <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-                  <Route path="/reset-password/:token" element={<ResetPasswordPage />} />
+                  {/* Auth / Login disabled: Redirect directly to Home */}
+                  <Route path="/account" element={<Navigate to="/" replace />} />
+                  <Route path="/login" element={<Navigate to="/" replace />} />
+                  <Route path="/register" element={<Navigate to="/" replace />} />
+                  <Route path="/forgot-password" element={<Navigate to="/" replace />} />
+                  <Route path="/reset-password/:token" element={<Navigate to="/" replace />} />
 
                   {/* 404 Fallback */}
                   <Route path="*" element={<HomePage />} />
@@ -119,6 +121,9 @@ function App() {
               {/* Global AI Stylist Chatbot & WhatsApp Support */}
               <AiChatbot />
               <WhatsAppButton />
+
+              {/* Mobile Bottom Navigation Bar matching reference site */}
+              <MobileBottomNav />
             </div>
           </Router>
         </WishlistProvider>

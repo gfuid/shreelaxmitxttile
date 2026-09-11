@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { productsApi } from '../services/api';
 import HeroArches from '../components/HeroArches';
 import TrustPerksBar from '../components/TrustPerksBar';
+import MarqueeRibbon from '../components/MarqueeRibbon';
 import FeaturedCollections from '../components/FeaturedCollections';
 import OccasionShowcase from '../components/OccasionShowcase';
 import CategoryGrid from '../components/CategoryGrid';
@@ -41,6 +42,9 @@ const HomePage = () => {
 
       {/* 2. Trust & Value Propositions Bar */}
       <TrustPerksBar />
+
+      {/* 2.5 Infinite Moving Wholesale & Trust Marquee Ribbon */}
+      <MarqueeRibbon />
 
       {/* 3. Featured Collections 5-Column Grid with Price Pills matching image.png */}
       <FeaturedCollections

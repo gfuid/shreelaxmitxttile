@@ -239,7 +239,7 @@ const AiChatbot = () => {
     <>
       {/* Floating Launcher Button */}
       {!isOpen && (
-        <div className="fixed bottom-6 right-6 z-40 flex items-center gap-3 select-none">
+        <div className="fixed bottom-20 right-4 sm:bottom-6 sm:right-6 z-40 flex items-center gap-3 select-none">
           <div
             onClick={() => setIsOpen(true)}
             className="hidden sm:flex items-center gap-2 bg-[#1C1917]/95 text-amber-200 text-xs font-bold px-3.5 py-2 rounded-full shadow-2xl border border-amber-400/40 cursor-pointer hover:border-amber-400 transition-all animate-in fade-in slide-in-from-bottom-2"
