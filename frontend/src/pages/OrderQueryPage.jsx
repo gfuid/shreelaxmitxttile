@@ -103,13 +103,15 @@ const OrderQueryPage = () => {
             {/* FlowConnect Iframe */}
             <div className={`transition-opacity duration-500 ${!showLoader && iframeLoaded ? 'opacity-100' : 'opacity-0 h-0 overflow-hidden'}`}>
               <iframe
-                src="https://app.flowconnect.ai/form/sri-vijay-laxmi-sarees-textiles-order-query--mtud52ox"
+                src="https://app.flowconnect.ai/form/sri-vijay-laxmi-sarees-textiles-order-new"
+                name="lovable-form-sri-vijay-laxmi-sarees-textiles-order-new"
                 width="100%"
                 height="650"
                 frameBorder="0"
-                style={{ border: 'none', minHeight: '650px', width: '100%' }}
-                title="Sri Vijay Laxmi Sarees & Textiles Order Query Form"
+                style={{ border: 'none', minHeight: '600px', width: '100%' }}
+                title="Sri Vijay Laxmi Sarees & Textiles Order Form"
                 className="w-full rounded-2xl"
+                loading="lazy"
                 onLoad={() => setIframeLoaded(true)}
               ></iframe>
             </div>
